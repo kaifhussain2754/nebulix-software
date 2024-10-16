@@ -1,0 +1,75 @@
+/* src/components/SplashScreen.css */
+
+@keyframes zoomIn {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .splash-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #000000; /* Background color for splash screen */
+    color: #fcfbfc; /* Text color for splash screen */
+    position: fixed; /* Fixed position to cover the entire screen */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999; /* High z-index to cover other components */
+    padding: 20px; /* Padding for smaller screens */
+    box-sizing: border-box; /* Ensure padding does not affect width */
+  }
+  
+  .logo {
+    animation: zoomIn 1s ease-in-out forwards; /* Zoom in animation */
+    width: 25%; /* Relative width for responsiveness */
+    max-width: 120px; /* Maximum width to maintain size */
+    backface-visibility: hidden; /* Prevents blurring during animation */
+  }
+  
+  .Splashtitle {
+    animation: slideIn 1s ease-in-out forwards; /* Slide in animation */
+    font-size: 2rem; /* Base font size */
+    margin-top: 20px; /* Space below the logo */
+    text-shadow: 
+      0 0 20px #fff,   /* Outer glow */
+      0 0 30px #fff;   /* Intense glow */
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    .logo {
+      width: 50%; /* Increase logo size on smaller screens */
+      max-width: 80px; /* Limit maximum size for smaller screens */
+    }
+  
+    .title {
+      font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .title {
+      font-size: 1.2rem; /* Further adjust font size for very small screens */
+    }
+  }
+  

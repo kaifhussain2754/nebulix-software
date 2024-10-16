@@ -1,0 +1,73 @@
+/* Services.css */
+
+.section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .backgroundImage {
+    background: url("/src/assets/Services.png") no-repeat center;
+    background-size: cover;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  
+  .card {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+  }
+  
+  .icon {
+    font-size: 40px;
+    color: #fff;
+  }
+  
+  .hover-effect {
+    transition: transform 0.3s ease;
+  }
+  
+  .hover-effect:hover {
+    transform: translateY(-10px); /* Move up on hover */
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 576px) {
+    .section {
+      padding: 1rem;
+    }
+    .icon {
+      font-size: 30px;
+    }
+  }
+  
+  @media (min-width: 576px) and (max-width: 768px) {
+    .section {
+      padding: 1.5rem;
+    }
+    .icon {
+      font-size: 35px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .section {
+      padding: 2rem;
+    }
+    .icon {
+      font-size: 40px;
+    }
+  }
+  

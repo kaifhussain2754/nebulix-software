@@ -1,0 +1,108 @@
+/* Base Styles (for desktops) */
+.team-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: auto;
+    width: 60%;
+}
+
+.team-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.container {
+    padding: 0 16px;
+}
+
+.title {
+    color: grey;
+    font-size: 16px;
+}
+
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+.button:hover {
+    background-color: #555;
+}
+
+.team-slider {
+    width: 30%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.TeamHeading {
+    text-align: center;
+}
+
+/* Large Desktop (1200px and up) */
+@media (min-width: 1200px) {
+    .team-slider {
+        width: 25%;
+    }
+}
+
+/* Medium Desktop and Tablet Landscape (992px and up) */
+@media (max-width: 1199px) and (min-width: 768px) {
+    .team-slider {
+        width: 40%;
+    }
+
+    .team-card {
+        width: 80%;
+    }
+}
+
+/* Tablet Portrait (768px and up) */
+@media (max-width: 991px) and (min-width: 576px) {
+    .team-slider {
+        width: 60%;
+    }
+
+    .team-card {
+        width: 90%;
+    }
+
+    .HeadingTeamText{
+        font-size: 1.7rem;
+    }
+}
+
+/* Small Mobile (576px and below) */
+@media (max-width: 575px) {
+    .team-slider {
+        width: 90%;
+    }
+
+    .team-card {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 14px;
+    }
+
+    .HeadingTeamText{
+        font-size: 1.5rem;
+    }
+
+    .button {
+        font-size: 16px;
+    }
+}

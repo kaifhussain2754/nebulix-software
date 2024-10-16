@@ -1,0 +1,143 @@
+/* Home.css */
+
+/* General styles */
+.container-fluid {
+    background-color: #1c1c1c;
+    height: 100vh;
+  }
+  
+  h1, p {
+    color: white;
+  }
+
+/* CSS */
+.btn-custom {
+  all: unset;
+  width: 100px;
+  height: 30px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #f0f0f0;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn-custom::after,
+.btn-custom::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all .4s;
+}
+
+.btn-custom::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #1d3051 40%, #fcfbfc 100%);
+  border-radius: 10px;
+}
+
+.btn-custom::after {
+  transform: translate(10px, 10px);
+  width: 35px;
+  height: 35px;
+  background: #ffffff15;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 50px;
+}
+
+.btn-custom:hover::before {
+  transform: translate(5%, 20%);
+  width: 110%;
+  height: 110%;
+}
+
+.btn-custom:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.btn-custom:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
+}
+  
+  /* Image styles */
+  .hoveringImage {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    animation: hoverAnimation 1s ease-in-out infinite alternate; /* Apply animation */
+  }
+  
+  /* Animation for image hover */
+  @keyframes hoverAnimation {
+    0% {
+      transform: translateY(0); /* Original position */
+    }
+    100% {
+      transform: translateY(-10px); /* Move up */
+    }
+  }
+  
+  /* Media Queries for responsiveness */
+  @media (max-width: 1200px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    h1 {
+      font-size: 2rem;
+    }
+  
+    .btn-custom {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 0.5rem;
+    }
+
+    .container-fluid{
+        height: auto;
+    }
+  
+    .btn-custom {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    h1 {
+        margin-top: 20px;
+      font-size: 0.5rem;
+    }
+  
+    p {
+      font-size: 0.9rem;
+    }
+  
+    .btn-custom {
+      width: 100%; /* Full width button on small screens */
+    }
+  }
+  
