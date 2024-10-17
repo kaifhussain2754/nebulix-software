@@ -19,7 +19,7 @@
 }
 
 .title {
-    color: grey;
+    color: black;
     font-size: 16px;
 }
 
@@ -49,6 +49,7 @@
 
 .TeamHeading {
     text-align: center;
+    color: #000;
 }
 
 /* Large Desktop (1200px and up) */

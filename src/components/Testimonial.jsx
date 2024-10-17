@@ -20,7 +20,7 @@ const testimonials = [
     role: "Web Developer",
     rating: 5,
     colorClass: "bg-dark text-white",
-    imgSrc: "https://via.placeholder.com/100",
+    imgSrc: "src/assets/test1.jpg",
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const testimonials = [
     role: "Graphic Designer",
     rating: 4,
     colorClass: "bg-secondary text-white",
-    imgSrc: "https://via.placeholder.com/100",
+    imgSrc: "src/assets/test2.jpg",
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const testimonials = [
     role: "Project Manager",
     rating: 3,
     colorClass: "bg-info text-white",
-    imgSrc: "https://via.placeholder.com/100",
+    imgSrc: "src/assets/test3.jpg",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const testimonials = [
     role: "Marketing Specialist",
     rating: 4,
     colorClass: "bg-danger text-white",
-    imgSrc: "https://via.placeholder.com/100",
+    imgSrc: "src/assets/test4.jpg",
   },
   {
     id: 5,
@@ -56,7 +56,7 @@ const testimonials = [
     role: "Sales Manager",
     rating: 5,
     colorClass: "bg-dark text-white",
-    imgSrc: "https://via.placeholder.com/100",
+    imgSrc: "src/assets/test5.jpg",
   },
   {
     id: 6,
@@ -65,7 +65,7 @@ const testimonials = [
     role: "Software Engineer",
     rating: 5,
     colorClass: "bg-warning text-dark",
-    imgSrc: "https://via.placeholder.com/100",
+    imgSrc: "src/assets/test6.jpg",
   },
   {
     id: 7,
@@ -74,7 +74,7 @@ const testimonials = [
     role: "Content Writer",
     rating: 4,
     colorClass: "bg-success text-white",
-    imgSrc: "https://via.placeholder.com/100",
+    imgSrc: "src/assets/test7.jpg",
   },
   {
     id: 8,
@@ -83,103 +83,60 @@ const testimonials = [
     role: "Digital Marketing Expert",
     rating: 5,
     colorClass: "bg-primary text-white",
-    imgSrc: "https://via.placeholder.com/100",
+    imgSrc: "src/assets/test8.jpg",
   },
 ];
 
 const TestimonialCards = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+    const initOwlCarousel = () => {
+      if (window.$(".owl-carousel").length) {
+        window.$(".owl-carousel").owlCarousel({
+          items: 1,
+          loop: true,
+          autoplay: true,
+          autoplayTimeout: 3000,
+          dots: true,
+          nav: true,
+          responsive: {
+            0: { items: 1 },
+            768: { items: 2 },
+            992: { items: 3 },
+          },
+        });
+      }
     };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    initOwlCarousel();
   }, []);
 
   return (
-    <div className="container mt-5" style={{ height: "100vh", marginBottom: '150px' }}>
-      <h2 className="text-center mb-4 text-white">What Our Clients Say</h2>
-      {/* Conditionally render Swiper only on mobile devices */}
-      {isMobile ? (
-        <Swiper
-          // install Swiper modules
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
-          spaceBetween={50}
-          slidesPerView={1} // Display one slide on mobile
-          navigation
-          pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
-        >
-          {testimonials.map((testimonial) => (
-            <SwiperSlide key={testimonial.id}>
-              <div className={`card ${testimonial.colorClass}`}>
-                <div className="card-body">
-                  <div className="d-flex align-items-center">
-                    <img
-                      src={testimonial.imgSrc}
-                      alt={`${testimonial.name}'s profile`}
-                      className="rounded-circle me-3"
-                      style={{ width: "60px", height: "60px" }} // Profile image style
-                    />
-                    <div>
-                      <h5 className="card-title">{testimonial.name}</h5>
-                      <p className="card-text">{testimonial.role}</p>
-                    </div>
-                  </div>
-                  <p className="card-text">"{testimonial.text}"</p>
-                  <div className="rating">
-                    {[...Array(testimonial.rating)].map((_, index) => (
-                      <span key={index} className="text-warning">&#9733;</span> // Star icon
-                    ))}
-                    {[...Array(5 - testimonial.rating)].map((_, index) => (
-                      <span key={index} className="text-muted">&#9733;</span> // Empty star icon
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      ) : (
-        <div className="row">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className={`col-md-4 mb-4`}>
-              <div className={`card ${testimonial.colorClass}`}>
-                <div className="card-body">
-                  <div className="d-flex align-items-center">
-                    <img
-                      src={testimonial.imgSrc}
-                      alt={`${testimonial.name}'s profile`}
-                      className="rounded-circle me-3"
-                      style={{ width: "60px", height: "60px" }} // Profile image style
-                    />
-                    <div>
-                      <h5 className="card-title">{testimonial.name}</h5>
-                      <p className="card-text">{testimonial.role}</p>
-                    </div>
-                  </div>
-                  <p className="card-text">"{testimonial.text}"</p>
-                  <div className="rating">
-                    {[...Array(testimonial.rating)].map((_, index) => (
-                      <span key={index} className="text-warning">&#9733;</span> // Star icon
-                    ))}
-                    {[...Array(5 - testimonial.rating)].map((_, index) => (
-                      <span key={index} className="text-muted">&#9733;</span> // Empty star icon
-                    ))}
-                  </div>
-                </div>
+    <div className="container mt-5">
+      <h2 className="text-center mb-4 text-white">Hear From Our Clients</h2>
+      <div className="owl-carousel owl-theme">
+        {testimonials.map((testimonial) => (
+          <div key={testimonial.id} className="testimonial-card">
+            <div className="card-body text-center">
+              <img
+                src={testimonial.imgSrc}
+                alt={`${testimonial.name}'s profile`}
+                className="rounded-circle mb-3"
+                style={{ width: "60px", height: "60px" }}
+              />
+              <h5 className="card-title">{testimonial.name}</h5>
+              <p className="card-role">{testimonial.role}</p>
+              <p className="card-text">"{testimonial.text}"</p>
+              <div className="rating">
+                {[...Array(testimonial.rating)].map((_, index) => (
+                  <span key={index} className="text-warning">&#9733;</span>
+                ))}
+                {[...Array(5 - testimonial.rating)].map((_, index) => (
+                  <span key={index} className="text-muted">&#9733;</span>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-      )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -25,9 +25,8 @@ const Footer = () => {
             <div className="footer-column">
               <div className="footer-about">
                 <h3>About Us</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla a
-                  consectetur dictum, metus elit hendrerit lectus, et venenatis elit dui nec lorem.
+                <p style={{textAlign: 'justify'}}>
+                Our mission at Nebulix Software is to provide unique and proper software based on ideas and technological achievements. How we strive to help: Our mission at DashThis is to provide businesses with tools to grow and overcome existing dilemmas. Nebulix delivers professionalism by upholding its core values of integrity and provision of excellent services for continuous and long-term business relationships that turn noble concepts into realities by developing innovative ideas into valuable digital applications.
                 </p>
               </div>
             </div>
@@ -35,9 +34,10 @@ const Footer = () => {
               <div className="footer-links">
                 <h3>Useful Links</h3>
                 <a href="/">Home</a>
-                <a href="/aboutus">About</a>
-                <a href="/services">Products & Services</a>
-                <a href="#">Client Testimonials</a>
+                <a href="/services">Services</a>
+                <a href="/about">About</a>
+                <a href="pricing">Pricing</a>
+                <a href="/portfolio">Portfolio</a>
                 <a href="/contact">Contact Us</a>
               </div>
             </div>
@@ -45,13 +45,13 @@ const Footer = () => {
               <div className="footer-contact">
                 <h3>Get In Touch</h3>
                 <p>
-                  <i className="fa fa-map-marker" aria-hidden="true"></i> Hyderabad, Telangana 500045
+                  <i className="fa fa-map-marker" aria-hidden="true"></i> Udaipur, Rajasthan 313001
                 </p>
                 <p>
-                  <i className="fa fa-phone" aria-hidden="true"></i> +91 8008146642
+                  <i className="fa fa-phone" aria-hidden="true"></i> +91 6376769600
                 </p>
                 <p>
-                  <i className="fa fa-envelope"></i> abcd@example.com
+                  <i className="fa fa-envelope"></i> admin@nebulixsoftware.com
                 </p>
                 <div className="footer-social">
                   <a href="#"><i className="fab fa-twitter"></i></a>

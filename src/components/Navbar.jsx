@@ -29,7 +29,7 @@ const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
     <>
       <Navbar
         expand="lg"
-        bg={isDarkMode ? "dark" : "light"}
+        bg={isDarkMode ? "black" : "light"}
         variant={isDarkMode ? "dark" : "light"}
         fixed="top"
         style={{ 
@@ -45,19 +45,19 @@ const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
               alt="Nebulix Software Logo"
               style={{ width: '40px', marginRight: '10px' }}
             />
-            <span style={{ color: isDarkMode ? '#FFFFFF' : '#000000' }}>Nebulix Software</span>
+            <span style={{ color: isDarkMode ? '#FFFFFF' : '#000000', textShadow: '2px 2px 4px #800080'}}>Nebulix Software</span>
           </Navbar.Brand>
 
           {/* Conditionally Render Navbar Links */}
           {!isSmallScreen ? (
             <Nav className="ml-auto">
-              <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link as={Link} to="/services">Services</Nav.Link>
-              <Nav.Link as={Link} to="/about">About</Nav.Link>
-              <Nav.Link as={Link} to="/pricing">Pricing</Nav.Link>
-              <Nav.Link as={Link} to="/portfolio">Our Portfolio</Nav.Link>
-              <Nav.Link as={Link} to="/career">Career</Nav.Link>
-              <Nav.Link as={Link} to="/contact-us">Contact Us</Nav.Link>
+              <Nav.Link as={Link} to="/" style={{color: 'white'}}>Home</Nav.Link>
+              <Nav.Link as={Link} to="/services" style={{color: 'white'}}>Services</Nav.Link>
+              <Nav.Link as={Link} to="/about" style={{color: 'white'}}>About</Nav.Link>
+              <Nav.Link as={Link} to="/pricing" style={{color: 'white'}}>Pricing</Nav.Link>
+              <Nav.Link as={Link} to="/portfolio" style={{color: 'white'}}>Our Portfolio</Nav.Link>
+              <Nav.Link as={Link} to="/career" style={{color: 'white'}}>Career</Nav.Link>
+              <Nav.Link as={Link} to="/contact-us" style={{color: 'white'}}>Contact Us</Nav.Link>
             </Nav>
           ) : (
             <Navbar.Toggle 

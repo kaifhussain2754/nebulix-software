@@ -6,10 +6,11 @@ import AboutUs from './AboutUs';
 import './Home.css';
 import TestimonialCards from './Testimonial';
 import Footer from './Footer';
+import StatsSection from './Stats';
 
 const Home = () => {
   return (
-    <div className="home-container" style={{ marginTop: '100px' }}> {/* Add top margin here */}
+    <div className="home-container" style={{marginTop: '100px' }}> {/* Add top margin here */}
       <Container fluid>
         <Container style={{ height: '100%' }}>
           <Row className="h-100 align-items-center">
@@ -36,7 +37,7 @@ const Home = () => {
             </Col>
           </Row>
         </Container>
-
+        <StatsSection />
         <Services />
         <AboutUs />
         <TestimonialCards />
