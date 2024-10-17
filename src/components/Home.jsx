@@ -17,7 +17,7 @@ const Home = () => {
             <h1 className="display-3 display-sm-4 mb-4">
               Revolutionizing the Future of IT Solutions
             </h1>
-            <p className="lead mb-1">
+            <p className="lead mb-1" style={{textAlign: 'justify'}}>
             Find out how to improve your visibility online and try out new ideas you might have never heard of before.
             Upgrade your commercial entity through innovative information technology and services.
             The team of specialists is focused on the customized approaches.

@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { SiWebstorm, SiAndroid, SiSketch, SiGooglecloud, SiAdobe, SiApple } from 'react-icons/si'; // Import icons
-import AOS from 'aos'; // Import AOS
-import 'aos/dist/aos.css'; // Import AOS CSS
-import './Services.css'; // Import the external CSS file
+import { SiWebstorm, SiAndroid, SiSketch, SiGooglecloud, SiAdobe, SiApple } from 'react-icons/si';
+import AOS from 'aos'; 
+import 'aos/dist/aos.css'; 
+import './Services.css'; 
 
-// Updated services data
 const servicesData = [
   {
     title: 'Web Development',
@@ -46,15 +45,15 @@ const servicesData = [
 
 const Services = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Initialize AOS with duration
+    AOS.init({ duration: 1000 });
   }, []);
 
   return (
-    <Container fluid className="py-5 section">
+    <Container fluid className="py-5 section" style={{ marginBottom: '50px' }}>
       <div className="backgroundImage" />
       <Container>
         <Row>
-          <Col xs={12} className="text-center mb-4">
+          <Col xs={12} className="text-center mb-4" style={{ marginTop: '30px' }}>
             <h2 style={{ color: '#FFFFFF' }}>Tap More of Your Potential with Our Services!</h2>
           </Col>
         </Row>
@@ -63,7 +62,7 @@ const Services = () => {
             <Col xs={12} sm={6} md={4} key={index}>
               <Card
                 className="hover-effect"
-                data-aos={index % 2 === 0 ? 'fade-left' : 'fade-right'} // Alternate animation direction
+                data-aos={index % 2 === 0 ? 'fade-left' : 'fade-right'}
               >
                 <Card.Body className="text-center">
                   {service.icon}
@@ -71,7 +70,7 @@ const Services = () => {
                   <Card.Text>{service.description}</Card.Text>
                 </Card.Body>
                 <Card.Footer className="text-center">
-                  <Button variant="primary" className='btn-custom'>Learn More</Button>
+                  <Button className='service-btn'>Learn More</Button>
                 </Card.Footer>
               </Card>
             </Col>

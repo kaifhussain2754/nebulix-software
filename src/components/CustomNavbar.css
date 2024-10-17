@@ -1,0 +1,64 @@
+/* Base styles for Navbar */
+.custom-navbar {
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(253, 253, 253, 0.509); /* Add box shadow */
+}
+
+/* Hamburger button animation */
+.hamburger {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: #000;
+  transition: all 0.3s ease;
+}
+
+.hamburger.is-active .bar:nth-child(1) {
+  transform: rotate(45deg) translateY(10px);
+}
+
+.hamburger.is-active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.is-active .bar:nth-child(3) {
+  transform: rotate(-45deg) translateY(-10px);
+}
+
+/* Slide-in effect for navbar when expanded */
+.navbar-expanded .navbar-collapse {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
+}
+
+.navbar-collapse {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Custom link styles for better visibility in the overlay */
+.navbar-collapse .nav-link {
+  color: #fff !important;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+}

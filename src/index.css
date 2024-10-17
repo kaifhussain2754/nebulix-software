@@ -1,9 +1,10 @@
 /* src/index.css */
-body {
+html, body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: #1c1c1c; /* Dark background color */
+  overflow-x: hidden;
 }
 .navbar-links {
   display: flex;
@@ -21,3 +22,39 @@ body {
   }
 }
 
+/* Scrollbar Track */
+::-webkit-scrollbar {
+  width: 5px;
+  overflow-x:auto;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a; /* Dark background for track */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+/* Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff6f61, #ffbd61); /* Gradient color for thumb */
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(255, 182, 61, 0.6); /* Glow effect */
+}
+
+/* Scrollbar Thumb Hover Effect */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff8b61, #ffd261);
+  box-shadow: 0 0 12px rgba(255, 182, 61, 0.8); /* Increased glow on hover */
+}
+
+.card {
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Padding inside the card */
+  box-shadow: 0 4px 15px rgba(128, 0, 128, 0.3); /* Soft purple shadow */
+  transition: 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect to increase the glow */
+.card:hover {
+  box-shadow: 0 0 25px rgba(128, 0, 128, 0.6), 0 0 50px rgba(128, 0, 128, 0.4); /* Increased glow on hover */
+}

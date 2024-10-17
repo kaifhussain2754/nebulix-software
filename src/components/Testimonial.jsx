@@ -102,7 +102,7 @@ const TestimonialCards = () => {
   }, []);
 
   return (
-    <div className="container mt-5" style={{ height: "100vh" }}>
+    <div className="container mt-5" style={{ height: "100vh", marginBottom: '150px' }}>
       <h2 className="text-center mb-4 text-white">What Our Clients Say</h2>
       {/* Conditionally render Swiper only on mobile devices */}
       {isMobile ? (

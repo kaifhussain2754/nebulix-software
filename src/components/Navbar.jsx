@@ -1,108 +1,125 @@
 import React, { useState, useEffect } from "react";
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { Navbar, Nav, Container, Offcanvas } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu'; // Import MenuIcon
 
-const Navbar = ({ toggleColorScheme, isDarkMode }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const isSmallScreen = useMediaQuery('(max-width: 768px)'); // Hook to detect small screens
-  const [visible, setVisible] = useState(true); // State to track navbar visibility
-  const [lastScrollY, setLastScrollY] = useState(0); // State to track last scroll position
-
-  const handleMenuClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
+const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
+  const [expanded, setExpanded] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const isSmallScreen = useMediaQuery('(max-width: 998px)');
 
   const controlNavbar = () => {
     if (typeof window !== 'undefined') {
       if (window.scrollY > lastScrollY) {
-        setVisible(false); // Hide navbar when scrolling down
+        setVisible(false);
       } else {
-        setVisible(true); // Show navbar when scrolling up
+        setVisible(true);
       }
-      setLastScrollY(window.scrollY); // Update last scroll position
+      setLastScrollY(window.scrollY);
     }
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', controlNavbar); // Add scroll event listener
-    return () => {
-      window.removeEventListener('scroll', controlNavbar); // Clean up the event listener on unmount
-    };
+    window.addEventListener('scroll', controlNavbar);
+    return () => window.removeEventListener('scroll', controlNavbar);
   }, [lastScrollY]);
 
   return (
-    <AppBar position="fixed" style={{ backgroundColor: isDarkMode ? '#000000' : '#fcfbfc', transition: 'top 0.3s', top: visible ? '0' : '-64px' }}>
-      <Toolbar style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        {/* Logo */}
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-          <img 
-            src="/src/assets/nebulix.png" // Replace with your logo path
-            alt="Nebulix Software Logo"
-            style={{ width: '40px', marginRight: '16px' }}
-          />
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: isDarkMode ? '#FFFFFF' : '#000000' }}>
-            Nebulix Software
-          </Typography>
-        </Link>
+    <>
+      <Navbar
+        expand="lg"
+        bg={isDarkMode ? "dark" : "light"}
+        variant={isDarkMode ? "dark" : "light"}
+        fixed="top"
+        style={{ 
+          top: visible ? '0' : '-64px', 
+          transition: 'top 0.3s', 
+          boxShadow: '0 4px 20px rgba(255, 255, 255, 0.2)',
+        }}
+      >
+        <Container>
+          <Navbar.Brand as={Link} to="/" style={{ fontFamily: 'Orbitron', fontWeight: '700' , textShadow: '0 0 10px rgba(128, 0, 128, 1)' }}>
+            <img 
+              src="/src/assets/nebulix.png"
+              alt="Nebulix Software Logo"
+              style={{ width: '40px', marginRight: '10px' }}
+            />
+            <span style={{ color: isDarkMode ? '#FFFFFF' : '#000000' }}>Nebulix Software</span>
+          </Navbar.Brand>
 
-        {/* Responsive Navigation Links */}
-        <div style={{ marginLeft: 'auto', display: 'flex', gap: '1rem' }}> {/* Aligns nav links to the right */}
-          {!isSmallScreen && (
-            <>
-              <Button component={Link} to="/" color={isDarkMode ? 'inherit' : 'primary'}>Home</Button>
-              <Button component={Link} to="/services" color={isDarkMode ? 'inherit' : 'primary'}>Services</Button>
-              <Button component={Link} to="/about" color={isDarkMode ? 'inherit' : 'primary'}>About</Button>
-              <Button component={Link} to="/pricing" color={isDarkMode ? 'inherit' : 'primary'}>Pricing</Button>
-              <Button component={Link} to="/portfolio" color={isDarkMode ? 'inherit' : 'primary'}>Our Portfolio</Button>
-              <Button component={Link} to="/Career" color={isDarkMode ? 'inherit' : 'primary'}>Career</Button>
-              <Button component={Link} to="/contact-us" color={isDarkMode ? 'inherit' : 'primary'}>Contact Us</Button>
-            </>
+          {/* Conditionally Render Navbar Links */}
+          {!isSmallScreen ? (
+            <Nav className="ml-auto">
+              <Nav.Link as={Link} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} to="/services">Services</Nav.Link>
+              <Nav.Link as={Link} to="/about">About</Nav.Link>
+              <Nav.Link as={Link} to="/pricing">Pricing</Nav.Link>
+              <Nav.Link as={Link} to="/portfolio">Our Portfolio</Nav.Link>
+              <Nav.Link as={Link} to="/career">Career</Nav.Link>
+              <Nav.Link as={Link} to="/contact-us">Contact Us</Nav.Link>
+            </Nav>
+          ) : (
+            <Navbar.Toggle 
+              aria-controls="offcanvasNavbar" 
+              onClick={() => setExpanded(!expanded)} 
+              style={{
+                border: 'none',
+                position: 'relative',
+                outline: 'none',
+                width: '50px',
+                height: '40px'
+              }}
+            >
+              <span style={{
+                display: 'block',
+                width: '100%',
+                height: '2px',
+                background: isDarkMode ? '#fff' : '#333',
+                marginBottom: '5px',
+              }} />
+              <span style={{
+                display: 'block',
+                width: '100%',
+                height: '2px',
+                background: isDarkMode ? '#fff' : '#333',
+                marginBottom: '5px',
+              }} />
+              <span style={{
+                display: 'block',
+                width: '100%',
+                height: '2px',
+                background: isDarkMode ? '#fff' : '#333',
+              }} />
+            </Navbar.Toggle>
           )}
-        </div>
+        </Container>
+      </Navbar>
 
-        {/* Hamburger Menu for Small Screens */}
-        {isSmallScreen && (
-          <IconButton 
-            edge="end" 
-            color="inherit" 
-            onClick={handleMenuClick} 
-            aria-controls="simple-menu" 
-            aria-haspopup="true"
-          >
-            <MenuIcon /> {/* Use MenuIcon component */}
-          </IconButton>
-        )}
-
-        {/* Menu Items */}
-        <Menu
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleMenuClose}
-        >
-          <MenuItem onClick={handleMenuClose} component={Link} to="/">Home</MenuItem>
-          <MenuItem onClick={handleMenuClose} component={Link} to="/services">Services</MenuItem>
-          <MenuItem onClick={handleMenuClose} component={Link} to="/about">About</MenuItem>
-          <MenuItem onClick={handleMenuClose} component={Link} to="/pricing">Pricing</MenuItem>
-          <MenuItem onClick={handleMenuClose} component={Link} to="/portfolio">Our Portfolio</MenuItem>
-          <MenuItem onClick={handleMenuClose} component={Link} to="/Career">Career</MenuItem>
-          <MenuItem onClick={handleMenuClose} component={Link} to="/contact-us">Contact Us</MenuItem>
-        </Menu>
-      </Toolbar>
-    </AppBar>
+      {/* Offcanvas Sidebar for Mobile */}
+      <Offcanvas
+        show={expanded}
+        onHide={() => setExpanded(false)}
+        placement="start"
+        style={{ width: '250px', color: 'white', backgroundColor: isDarkMode ? "#333" : "#fff" }}
+      >
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Menu</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <Nav className="flex-column">
+            <Nav.Link as={Link} to="/" onClick={() => setExpanded(false)} style={{ color: isDarkMode ? '#fff' : '#333' }}>Home</Nav.Link>
+            <Nav.Link as={Link} to="/services" onClick={() => setExpanded(false)} style={{ color: isDarkMode ? '#fff' : '#333' }}>Services</Nav.Link>
+            <Nav.Link as={Link} to="/about" onClick={() => setExpanded(false)} style={{ color: isDarkMode ? '#fff' : '#333' }}>About</Nav.Link>
+            <Nav.Link as={Link} to="/pricing" onClick={() => setExpanded(false)} style={{ color: isDarkMode ? '#fff' : '#333' }}>Pricing</Nav.Link>
+            <Nav.Link as={Link} to="/portfolio" onClick={() => setExpanded(false)} style={{ color: isDarkMode ? '#fff' : '#333' }}>Our Portfolio</Nav.Link>
+            <Nav.Link as={Link} to="/career" onClick={() => setExpanded(false)} style={{ color: isDarkMode ? '#fff' : '#333' }}>Career</Nav.Link>
+            <Nav.Link as={Link} to="/contact-us" onClick={() => setExpanded(false)} style={{ color: isDarkMode ? '#fff' : '#333' }}>Contact Us</Nav.Link>
+          </Nav>
+        </Offcanvas.Body>
+      </Offcanvas>
+    </>
   );
 };
 
-export default Navbar;
+export default CustomNavbar;
