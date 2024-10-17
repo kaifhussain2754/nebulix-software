@@ -14,7 +14,7 @@ const AboutUs = () => {
     <div className="container my-5">
       <div className="row">
         <div className="col-md-6" data-aos="fade-right" data-aos-duration="1000">
-          <h2 style={{ color: 'white', marginTop: '150px' }}>About Nebulix Software</h2>
+          <h2 style={{ color: 'white', marginTop: '50px' }}>About Nebulix Software</h2>
           <p style={{textAlign: 'justify'}}>At Nebulix Software the name itself has a lot of essence as it means inspiration and innovation. The name “Nebulix” was obtained from the word “nebula” which refers to birth of stars and creativity plus the modern techno-commercial suffix “-ix” to depict our organisation’s focus on providing technologically advanced solution. Our team is a devoted software development provider offering unique web, application, and turn-key software solutions based on a client’s need.</p>
 
           <p style={{textAlign: 'justify'}}>As a Nebulix Software Company, we anticipate that technology should be a part of everyday using in business and in the lives of individuals. Our mission statement implies that our software solutions shall solve existing problems as well as aid in growth and innovation. Our main aim and objective is to offer you the technological solutions and products we wish to have if we were in your shoes. Our corporate values include integrity, teamwork, commitment to excellence and customer care that shapes mutual and long term partnership between our company and customers. Actually being a tech enthusiast and dedicated to deliver quality work, Nebulix Software is ready to help you step into the future and transform creative concepts into powerful tools for success of your enterprise.</p>

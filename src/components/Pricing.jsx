@@ -263,7 +263,7 @@ const Pricing = () => {
 
   return (
     <div className="container py-5">
-      <h2 className="text-center text-light mb-4">Pricing Plans</h2>
+      <h2 className="text-center text-light mb-4" style={{marginTop: '50px'}}>Pricing Plans</h2>
 
       {/* Search Box */}
       <div className="mb-4 text-center">

@@ -22,36 +22,15 @@ html, body {
   }
 }
 
-/* Scrollbar Track */
-::-webkit-scrollbar {
-  width: 5px;
-  overflow-x:auto;
-}
-
-::-webkit-scrollbar-track {
-  background: #1a1a1a; /* Dark background for track */
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-}
-
-/* Scrollbar Thumb */
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #ff6f61, #ffbd61); /* Gradient color for thumb */
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(255, 182, 61, 0.6); /* Glow effect */
-}
-
-/* Scrollbar Thumb Hover Effect */
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #ff8b61, #ffd261);
-  box-shadow: 0 0 12px rgba(255, 182, 61, 0.8); /* Increased glow on hover */
-}
-
 .card {
-  border-radius: 10px; /* Rounded corners */
-  padding: 20px; /* Padding inside the card */
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
   box-shadow: 0 4px 15px rgba(128, 0, 128, 0.3); /* Soft purple shadow */
   transition: 0.3s ease; /* Smooth transition for hover effect */
+  color: #fff;
 }
 
 /* Hover effect to increase the glow */
