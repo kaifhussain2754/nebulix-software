@@ -1,7 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css'; // Ensure this path is correct
 
 const Footer = () => {
+  const [email, setEmail] = useState(""); // State to hold the email input
+  const [result, setResult] = useState(""); // State to hold submission result
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value); // Update email state on input change
+  };
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault(); // Prevent default form submission
+    setResult("Subscribing..."); // Update result message
+
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("access_key", "27db761f-1475-4069-9ec2-8eecf7ffe1e6"); // Your access key
+
+    // Replace the URL with your newsletter subscription endpoint
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Successfully subscribed!"); // Update success message
+      setEmail(""); // Clear the email input
+    } else {
+      console.log("Error", data);
+      setResult("Subscription failed. Please try again."); // Update error message
+    }
+  };
+
   return (
     <div className="footer-container">
       <div className="footer">
@@ -14,10 +46,18 @@ const Footer = () => {
             <div className="footer-column">
               <div className="newsletter">
                 <h2>Subscribe to Our Newsletter</h2>
-                <div className="newsletter-form">
-                  <input className="newsletter-input" placeholder="Email here" />
-                  <button className="newsletter-btn">Submit</button>
-                </div>
+                <form className="newsletter-form" onSubmit={handleNewsletterSubmit}>
+                  <input
+                    type="email"
+                    className="newsletter-input"
+                    placeholder="Email here"
+                    value={email}
+                    onChange={handleEmailChange} // Update email on input change
+                    required
+                  />
+                  <button type="submit" className="newsletter-btn">Submit</button>
+                </form>
+                {result && <p>{result}</p>} {/* Show submission result */}
               </div>
             </div>
           </div>
@@ -25,8 +65,8 @@ const Footer = () => {
             <div className="footer-column">
               <div className="footer-about">
                 <h3>About Us</h3>
-                <p style={{textAlign: 'justify'}}>
-                Our mission at Nebulix Software is to provide unique and proper software based on ideas and technological achievements. How we strive to help: Our mission at DashThis is to provide businesses with tools to grow and overcome existing dilemmas. Nebulix delivers professionalism by upholding its core values of integrity and provision of excellent services for continuous and long-term business relationships that turn noble concepts into realities by developing innovative ideas into valuable digital applications.
+                <p style={{ textAlign: 'justify' }}>
+                  Our mission at Nebulix Software is to provide unique and proper software based on ideas and technological achievements. How we strive to help: Our mission at DashThis is to provide businesses with tools to grow and overcome existing dilemmas. Nebulix delivers professionalism by upholding its core values of integrity and provision of excellent services for continuous and long-term business relationships that turn noble concepts into realities by developing innovative ideas into valuable digital applications.
                 </p>
               </div>
             </div>

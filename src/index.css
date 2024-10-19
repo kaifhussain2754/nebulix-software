@@ -11,6 +11,33 @@ html, body {
   flex-wrap: wrap;
 }
 
+/* Add this to your existing CSS */
+
+.rocket-icon {
+  display: inline-flex; /* Align icon with text */
+  margin-right: 8px; /* Space between icon and text */
+  transition: transform 0.5s ease; /* Smooth transition for animation */
+}
+
+/* Rocket animation on submit */
+.animate-rocket {
+  animation: fly 0.5s ease forwards; /* Animation to move the rocket */
+}
+
+/* Define the fly animation */
+@keyframes fly {
+  0% {
+    transform: translateY(0) rotate(0deg); /* Start position */
+  }
+  50% {
+    transform: translateY(-10px) rotate(15deg); /* Move up and rotate */
+  }
+  100% {
+    transform: translateY(0) rotate(0deg); /* Return to original position */
+  }
+}
+
+
 /* Hide the navigation links on small screens */
 @media (max-width: 768px) {
   .navbar-links {
