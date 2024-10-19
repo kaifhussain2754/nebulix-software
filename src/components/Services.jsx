@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { SiWebstorm, SiAndroid, SiSketch, SiGooglecloud, SiAdobe, SiApple } from 'react-icons/si';
 import AOS from 'aos'; 
 import 'aos/dist/aos.css';
+import './services.css';  // Import your CSS file
 
 const servicesData = [
   { title: 'Web Development', description: 'Building responsive and high-performance websites.', icon: <SiWebstorm style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} /> },
@@ -33,43 +34,20 @@ const Services = () => {
           {servicesData.map((service, index) => (
             <Col xs={12} sm={6} md={4} key={index}>
               <Card
-                style={{
-                  backdropFilter: 'blur(10px)',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  borderRadius: '10px',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  color: '#FFFFFF',
-                  transition: 'transform 0.3s ease',
-                  boxShadow: '0 4px 15px rgba(128, 0, 128, 0.3)',
-                  padding: window.innerWidth < 576 ? '1rem' : '1.5rem',
-                }}
+                className="service-card"
                 data-aos={index % 2 === 0 ? 'fade-left' : 'fade-right'}
               >
                 <Card.Body className="text-center">
                   {service.icon}
-                  <Card.Title style={{ color: '#FFFFFF', fontSize: window.innerWidth < 576 ? '1.2rem' : '1.5rem', marginTop: '10px', fontWeight: 'bold' }}>
+                  <Card.Title className="service-card-title">
                     {service.title}
                   </Card.Title>
-                  <Card.Text style={{ color: '#CCCCCC', fontSize: window.innerWidth < 576 ? '0.9rem' : '1rem' }}>
+                  <Card.Text className="service-card-text">
                     {service.description}
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer className="text-center">
-                  <Button
-                    style={{
-                      backgroundColor: '#000000',
-                      border: 'none',
-                      borderRadius: '15px',
-                      color: '#FFFFFF',
-                      fontSize: window.innerWidth < 576 ? '0.9rem' : '1rem',
-                      fontWeight: '600',
-                      padding: window.innerWidth < 576 ? '10px 20px' : '12px 24px',
-                      width: '100%',
-                      transition: 'all 0.3s',
-                    }}
-                    onMouseEnter={(e) => (e.target.style.backgroundColor = '#111111')}
-                    onMouseLeave={(e) => (e.target.style.backgroundColor = '#000000')}
-                  >
+                  <Button className="service-button">
                     Learn More
                   </Button>
                 </Card.Footer>
