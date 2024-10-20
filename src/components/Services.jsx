@@ -4,7 +4,7 @@ import { SiWebstorm, SiAndroid, SiSketch, SiGooglecloud, SiAdobe, SiApple } from
 import { Link } from 'react-router-dom'; // Import Link for navigation
 import AOS from 'aos'; 
 import 'aos/dist/aos.css';
-import './services.css';  // Import your CSS file
+import './Services.css';  // Import your CSS file
 
 const servicesData = [
   { title: 'Web Development', description: 'Building responsive and high-performance websites.', icon: <SiWebstorm style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} />, path: '/web' },
