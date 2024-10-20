@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Testimonial.css"; // For custom styles
+import "./testimonial.css"; // For custom styles
 
 // Testimonial data
 const testimonials = [
