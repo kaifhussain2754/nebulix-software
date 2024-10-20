@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import getTheme from './theme';
 import Navbar from "./components/Navbar";
+import SplashScreen from "./components/SplashScreen"; // Import the SplashScreen component
 import Home from "./components/Home"; // Import the Home component
 import Services from "./components/Services"; // Import the Services component
 import AboutUs from "./components/AboutUs";
@@ -30,10 +31,14 @@ const App = () => {
     setIsDarkMode((prev) => !prev);
   };
 
+  const handleSplashFinish = () => {
+    setShowSplash(false); // Hide the splash screen after it finishes
+  };
 
   return (
     <ThemeProvider theme={getTheme(isDarkMode ? 'dark' : 'light')}>
       <Router>
+        {showSplash && <SplashScreen onFinish={handleSplashFinish} />} {/* Show splash screen */}
         <Navbar toggleColorScheme={toggleColorScheme} isDarkMode={isDarkMode} />
         <main style={{ padding: '20px' }}>
           <Routes>
