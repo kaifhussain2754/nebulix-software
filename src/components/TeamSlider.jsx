@@ -14,18 +14,20 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/kaif-hussain-739361236/'
   },
   {
-    image: 'src/assets/team2.jpg',
-    name: 'Mike Ross',
-    title: 'Art Director',
+    image: 'src/assets/Mazahir.png',
+    name: 'Mazahir Attari',
+    title: 'Co - Founder',
     description: 'Mike brings creativity to life, designing our path toward visual excellence.',
     email: 'example@example.com',
+    linkedin: 'https://www.linkedin.com/in/mazahir-attari-27a2bb222/'
   },
   {
-    image: 'src/assets/team3.jpg',
-    name: 'John Doe',
-    title: 'Designer',
+    image: 'src/assets/mohit.jpeg',
+    name: 'Mohit Bhatt',
+    title: 'Co - Founder',
     description: 'John crafts designs that speak to the heart of our users.',
     email: 'example@example.com',
+    linkedin: 'https://www.linkedin.com/in/mohit-bhatt-40445a1ba/'
   },
 ];
 

@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import AOS from 'aos'; // Import AOS
 import 'aos/dist/aos.css'; // Import AOS styles
 import './GetStarted.css'; // Import your CSS file
+import { pricingPlans } from './Pricing'; // Import pricingPlans
+import SuccessModal from './SuccessModal'; // Import SuccessModal component
 
 export default function GetStarted() {
   const [result, setResult] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false); // State to control modal visibility
 
   useEffect(() => {
     AOS.init(); // Initialize AOS
@@ -27,6 +30,7 @@ export default function GetStarted() {
 
     if (data.success) {
       setResult("Form Submitted Successfully");
+      setShowSuccessModal(true); // Show success modal
       event.target.reset();
     } else {
       console.log("Error", data);
@@ -49,6 +53,7 @@ export default function GetStarted() {
       {/* Form Container */}
       <div className="form-container" data-aos="fade-left">
         <form onSubmit={onSubmit} className="form">
+          <h1 className='Hireus'>Hire Us!</h1>
           {/* Group 1: Name and Email */}
           <div className="form-row">
             <div className="form-group">
@@ -78,10 +83,11 @@ export default function GetStarted() {
             <label htmlFor="service">Select Service</label>
             <select name="service" required>
               <option value="">Select Service</option>
-              <option value="Web Development">Web Development</option>
-              <option value="App Development">App Development</option>
-              <option value="SEO">SEO</option>
-              <option value="Graphic Design">Graphic Design</option>
+              {pricingPlans.map((plan, index) => (
+                <option key={index} value={plan.name}>
+                  {plan.name}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -95,6 +101,13 @@ export default function GetStarted() {
 
         <span>{result}</span>
       </div>
+
+      {/* Success Modal */}
+      <SuccessModal
+        showModal={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        message="We have received your request, our team will contact you shortly."
+      />
     </div>
   );
 }

@@ -13,6 +13,7 @@ import Portfolio from "./components/Portfolio";
 import Pricing from "./components/Pricing";
 import Footer from "./components/Footer";
 import GetStarted from "./components/GetStarted";
+import ContactForm from "./components/ContactForm";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(true); // Default to dark mode
@@ -40,8 +41,7 @@ const App = () => {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/getstarted" element={<GetStarted />} />
-            <Route path="/work-with-us" element={<h1>Work with Us</h1>} />
-            <Route path="/contact-us" element={<h1>Contact Us</h1>} />
+            <Route path="/contact" element={<ContactForm />} />
           </Routes>
         </main>
         <ConditionalFooter /> {/* Conditionally render Footer */}

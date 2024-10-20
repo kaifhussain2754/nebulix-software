@@ -45,7 +45,7 @@ const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
               alt="Nebulix Software Logo"
               style={{ width: '40px', marginRight: '10px' }}
             />
-            <span style={{ color: isDarkMode ? '#FFFFFF' : '#000000', textShadow: '2px 2px 4px #800080'}}>Nebulix Software</span>
+            <span style={{textShadow: '2px 2px 4px #800080'}}>Nebulix Software</span>
           </Navbar.Brand>
 
           {/* Conditionally Render Navbar Links */}

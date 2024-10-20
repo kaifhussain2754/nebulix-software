@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './Footer.css'; // Ensure this path is correct
+import SuccessModal from './SuccessModal'; // Import the SuccessModal component
 
 const Footer = () => {
   const [email, setEmail] = useState(""); // State to hold the email input
   const [result, setResult] = useState(""); // State to hold submission result
+  const [showSuccessModal, setShowSuccessModal] = useState(false); // State to control success modal
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value); // Update email state on input change
@@ -27,6 +29,7 @@ const Footer = () => {
 
     if (data.success) {
       setResult("Successfully subscribed!"); // Update success message
+      setShowSuccessModal(true); // Show the success modal
       setEmail(""); // Clear the email input
     } else {
       console.log("Error", data);
@@ -124,6 +127,13 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* Success Modal */}
+      <SuccessModal
+        showModal={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        message="You have successfully subscribed to the newsletter!"
+      />
     </div>
   );
 };

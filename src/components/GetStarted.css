@@ -32,6 +32,16 @@
     animation: typewriter 10s steps(40, end) infinite, blink-caret 0.75s step-end infinite; /* Add infinite typewriter animation */
 }
 
+.Hireus{
+  font-size: 32px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #e81cff, #40c9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
 /* Typewriter animation */
 @keyframes typewriter {
     0%, 100% {
@@ -146,22 +156,23 @@
     justify-content: center;
     align-self: flex-start;
     font-family: inherit;
-    color: #717171;
+    color: #fff;
     font-weight: 600;
-    width: 40%;
-    background: #313131;
-    border: 1px solid #414141;
+    width: 100%;
+    background: #000;
+    border: none;
     padding: 12px 16px;
     font-size: inherit;
     gap: 8px;
-    margin-top: 8px;
+    margin-top: 15px;
     cursor: pointer;
     border-radius: 6px;
+    transition: 0.5s ease;
   }
   
   .form-container .form-submit-btn:hover {
     background-color: #fff;
-    border-color: #fff;
+    color: #000;
   }
   
   /* Adjustments for smaller devices */
