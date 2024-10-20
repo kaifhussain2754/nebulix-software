@@ -1,0 +1,66 @@
+/* src/index.css */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #1c1c1c; /* Dark background color */
+  overflow-x: hidden;
+}
+.navbar-links {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Add this to your existing CSS */
+
+.rocket-icon {
+  display: inline-flex; /* Align icon with text */
+  margin-right: 8px; /* Space between icon and text */
+  transition: transform 0.5s ease; /* Smooth transition for animation */
+}
+
+/* Rocket animation on submit */
+.animate-rocket {
+  animation: fly 0.5s ease forwards; /* Animation to move the rocket */
+}
+
+/* Define the fly animation */
+@keyframes fly {
+  0% {
+    transform: translateY(0) rotate(0deg); /* Start position */
+  }
+  50% {
+    transform: translateY(-10px) rotate(15deg); /* Move up and rotate */
+  }
+  100% {
+    transform: translateY(0) rotate(0deg); /* Return to original position */
+  }
+}
+
+
+/* Hide the navigation links on small screens */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; /* Ensure links do not show */
+  }
+
+  .material-icons {
+    display: block; /* Show hamburger menu icon */
+  }
+}
+
+.card {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(128, 0, 128, 0.3); /* Soft purple shadow */
+  transition: 0.3s ease; /* Smooth transition for hover effect */
+  color: #fff;
+}
+
+/* Hover effect to increase the glow */
+.card:hover {
+  box-shadow: 0 0 25px rgba(128, 0, 128, 0.6), 0 0 50px rgba(128, 0, 128, 0.4); /* Increased glow on hover */
+}

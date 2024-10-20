@@ -7,7 +7,7 @@ import ProjectModal from './ProjectModal'; // Import the modal component
 
 const portfolioItems = [
   {
-    image: 'src/assets/aakratisorganizers.jpg',
+    image: './aakratisorganizers.jpg',
     title: 'AakratisOrganizers',
     description: 'An E-commerce Website',
     link: 'https://www.aakratisorganizers.com',
@@ -17,7 +17,7 @@ const portfolioItems = [
     ],
   },
   {
-    image: 'src/assets/Dashboard.png',
+    image: './Dashboard.png',
     title: 'Weapon Management System',
     description: 'A Web Application to Manage Weapons Inventory, Made for Udaipur Military Station.',
     link: 'https://example.com/project-one',

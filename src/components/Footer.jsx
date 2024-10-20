@@ -44,7 +44,7 @@ const Footer = () => {
           <div className="footer-row">
             {/* Logo Column */}
             <div className="footer-column logo-column">
-              <img src="src/assets/nebulix.png" alt="Logo" className="footer-logo" /> {/* Logo */}
+              <img src="./nebulix.png" alt="Logo" className="footer-logo" /> {/* Logo */}
             </div>
             <div className="footer-column">
               <div className="newsletter">

@@ -1,0 +1,46 @@
+.square-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1; /* Ensures the image is 1:1 aspect ratio */
+    margin-bottom: 20px; /* Add bottom margin to image */
+}
+
+.text-align-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-start; /* Aligns buttons to the left */
+    margin-top: auto; /* Pushes buttons to the bottom of the content */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .square-image {
+        width: 80%; /* Reduce image size for mobile */
+        margin: 0 auto 20px auto; /* Center the image and add bottom margin */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Reduce heading size */
+    }
+
+    ul {
+        font-size: 0.9rem; /* Reduce list item size */
+    }
+
+    .button-container {
+        flex-direction: column; /* Stack buttons on smaller screens */
+        align-items: center; /* Center buttons */
+        justify-content: center; /* Center vertically */
+    }
+
+    .button-container .btn {
+        width: 100%; /* Make buttons full width */
+        margin: 0 auto;
+    }
+}

@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { SiWebstorm, SiAndroid, SiSketch, SiGooglecloud, SiAdobe, SiApple } from 'react-icons/si';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import AOS from 'aos'; 
 import 'aos/dist/aos.css';
 import './services.css';  // Import your CSS file
 
 const servicesData = [
-  { title: 'Web Development', description: 'Building responsive and high-performance websites.', icon: <SiWebstorm style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} /> },
-  { title: 'Mobile App Development', description: 'Creating cross-platform mobile applications for iOS and Android.', icon: <SiAndroid style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} /> },
-  { title: 'UI/UX Design', description: 'Designing user-friendly interfaces and experiences.', icon: <SiSketch style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} /> },
-  { title: 'SEO Optimization', description: 'Improving website visibility on search engines.', icon: <SiGooglecloud style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} /> },
-  { title: 'Graphic Design', description: 'Crafting visually stunning graphics and branding.', icon: <SiAdobe style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} /> },
-  { title: 'Android Development', description: 'Developing native and hybrid apps for Android devices.', icon: <SiAndroid style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} /> },
-  { title: 'iOS Development', description: 'Building sleek and powerful applications for iOS.', icon: <SiApple style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} /> },
+  { title: 'Web Development', description: 'Building responsive and high-performance websites.', icon: <SiWebstorm style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} />, path: '/web' },
+  { title: 'Mobile App Development', description: 'Creating cross-platform mobile applications for iOS and Android.', icon: <SiAndroid style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} />, path: '/app' },
+  { title: 'UI/UX Design', description: 'Designing user-friendly interfaces and experiences.', icon: <SiSketch style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} />, path: '/uiux' },
+  { title: 'SEO Optimization', description: 'Improving website visibility on search engines.', icon: <SiGooglecloud style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} />, path: '/SEO' },
+  { title: 'Graphic Design', description: 'Crafting visually stunning graphics and branding.', icon: <SiAdobe style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} />, path: '/graphic' },
+  { title: 'Android Development', description: 'Developing native and hybrid apps for Android devices.', icon: <SiAndroid style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} />, path: '/android' },
+  { title: 'iOS Development', description: 'Building sleek and powerful applications for iOS.', icon: <SiApple style={{ fontSize: window.innerWidth < 576 ? '2rem' : '3rem', color: '#FFFFFF' }} />, path: '/ios' },
 ];
 
 const Services = () => {
@@ -47,9 +48,9 @@ const Services = () => {
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer className="text-center">
-                  <Button className="service-button">
+                  <Link to={service.path} className="btn service-button"> {/* Use Link for navigation */}
                     Learn More
-                  </Button>
+                  </Link>
                 </Card.Footer>
               </Card>
             </Col>

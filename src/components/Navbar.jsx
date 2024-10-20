@@ -41,7 +41,7 @@ const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
         <Container>
           <Navbar.Brand as={Link} to="/" style={{ fontFamily: 'Orbitron', fontWeight: '700' , textShadow: '0 0 10px rgba(128, 0, 128, 1)' }}>
             <img 
-              src="/src/assets/nebulix.png"
+              src="/./nebulix.png"
               alt="Nebulix Software Logo"
               style={{ width: '40px', marginRight: '10px' }}
             />

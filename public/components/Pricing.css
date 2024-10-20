@@ -1,0 +1,44 @@
+.container {
+    max-width: 1200px; /* Adjust max-width as needed */
+  }
+  
+  .search-bar {
+    padding: 12px; /* Increase padding for better appearance */
+    border: 1px solid #ddd; /* Optional: style the border */
+    border-radius: 4px; /* Optional: style the border radius */
+  }
+  
+  .pricing-card {
+    background-color: #3a3838; /* Card background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    padding: 20px; /* Padding inside the card */
+    transition: transform 0.2s; /* Animation on hover */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: space-between; /* Space between items */
+    height: 100%; /* Ensure equal height */
+    color: #fff;
+  }
+  
+  .pricing-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+  }
+  
+  .pricing-features {
+    list-style: none; /* Remove default list style */
+    padding: 0; /* Remove padding */
+  }
+  
+  .pricing-button {
+    margin-top: auto; /* Push button to bottom */
+    padding: 10px 20px; /* Button padding */
+    background-color: #ff6f61; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  

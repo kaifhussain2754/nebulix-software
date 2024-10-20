@@ -14,7 +14,7 @@ const SplashScreen = ({ onFinish }) => {
   return (
     <div className="splash-screen">
       <img
-        src="/src/assets/nebulix.png" // Replace with your logo path
+        src="/./nebulix.png" // Replace with your logo path
         alt="Nebulix Software Logo"
         className="logo"
       />

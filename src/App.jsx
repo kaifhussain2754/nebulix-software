@@ -14,6 +14,14 @@ import Pricing from "./components/Pricing";
 import Footer from "./components/Footer";
 import GetStarted from "./components/GetStarted";
 import ContactForm from "./components/ContactForm";
+import WebDevelopment from "./components/WebDevelopment";
+import AppDevelopment from "./components/AppDevelopment";
+import UIUXDesign from "./components/UIUX";
+import SEOOptimization from "./components/SEOOptimization";
+import GraphicDesign from "./components/GraphicDesign";
+import AndroidDevelopment from "./components/AndroidDevelopment";
+import IOSDevelopment from "./components/IOS";
+import ContactUs from "./components/ContactUs";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(true); // Default to dark mode
@@ -42,6 +50,14 @@ const App = () => {
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/getstarted" element={<GetStarted />} />
             <Route path="/contact" element={<ContactForm />} />
+            <Route path="/web" element={<WebDevelopment />} />
+            <Route path="/app" element={<AppDevelopment />} />
+            <Route path="/uiux" element={<UIUXDesign />} />
+            <Route path="/SEO" element={<SEOOptimization />} />
+            <Route path="/graphic" element={<GraphicDesign />} />
+            <Route path="/android" element={<AndroidDevelopment />} />
+            <Route path="/IOS" element={<IOSDevelopment />} />
+            <Route path="/contact-us" element={<ContactUs />} />
           </Routes>
         </main>
         <ConditionalFooter /> {/* Conditionally render Footer */}

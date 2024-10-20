@@ -10,6 +10,7 @@ import Footer from './Footer';
 import StatsSection from './Stats';
 import AOS from 'aos'; // Import AOS
 import 'aos/dist/aos.css'; // Import AOS styles
+import { Helmet } from 'react-helmet'; // Import React Helmet
 
 const Home = () => {
   useEffect(() => {
@@ -18,6 +19,15 @@ const Home = () => {
 
   return (
     <div className="home-container" style={{ marginTop: '100px' }}> {/* Add top margin here */}
+      {/* React Helmet for SEO */}
+      <Helmet>
+        <meta name="description" content="Discover innovative IT solutions to enhance your online visibility and grow your business. Join the revolution in transforming IT strategies." />
+        <meta name="keywords" content="IT Solutions, Information Technology, Business Growth, IT Services, Digital Transformation" />
+        <meta property="og:title" content="Revolutionizing IT Solutions" />
+        <meta property="og:description" content="Join us in revolutionizing IT solutions. Find out how to grow your business with innovative strategies and services." />
+        <meta property="og:image" content="/./homeimage.png" />
+      </Helmet>
+
       <Container fluid>
         <Container style={{ height: '100%' }}>
           <Row className="h-100 align-items-center">
@@ -39,7 +49,7 @@ const Home = () => {
             </Col>
             <Col md={6} xs={12} className="d-flex justify-content-end" data-aos="fade-left"> {/* Add AOS animation */}
               <img
-                src="/src/assets/homeimage.png"
+                src="/./homeimage.png"
                 alt="IT Solutions Illustration"
                 className="hoveringImage img-fluid"
               />

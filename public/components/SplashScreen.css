@@ -1,0 +1,77 @@
+/* src/components/SplashScreen.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+@keyframes zoomIn {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+}
+
+.splash-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #000000;
+    color: #fcfbfc;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: "Orbitron", sans-serif;
+}
+
+.logo {
+    animation: zoomIn 1s ease-in-out forwards;
+    width: 25%;
+    max-width: 120px;
+    backface-visibility: hidden;
+}
+
+.Splashtitle {
+    animation: slideIn 1s ease-in-out forwards;
+    font-size: 2rem;
+    margin-top: 20px;
+    text-shadow: 
+      0 0 20px #fff,
+      0 0 30px #fff;
+      font-family: "Orbitron", sans-serif;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .logo {
+      width: 50%;
+      max-width: 80px;
+    }
+  
+    .Splashtitle {
+      font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .Splashtitle {
+      font-size: 1.2rem;
+    }
+}

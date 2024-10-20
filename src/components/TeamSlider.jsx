@@ -6,7 +6,7 @@ import './TeamSlider.css';
 
 const teamMembers = [
   {
-    image: 'src/assets/KaifHussain.jpg',
+    image: './KaifHussain.jpg',
     name: 'Kaif Hussain',
     title: 'Founder & CEO',
     description: 'Driven by innovation and passion, Kaif leads our team with a vision for the future.',
@@ -14,7 +14,7 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/kaif-hussain-739361236/'
   },
   {
-    image: 'src/assets/Mazahir.png',
+    image: './Mazahir.png',
     name: 'Mazahir Attari',
     title: 'Co - Founder',
     description: 'Mike brings creativity to life, designing our path toward visual excellence.',
@@ -22,7 +22,7 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/mazahir-attari-27a2bb222/'
   },
   {
-    image: 'src/assets/mohit.jpeg',
+    image: './mohit.jpeg',
     name: 'Mohit Bhatt',
     title: 'Co - Founder',
     description: 'John crafts designs that speak to the heart of our users.',
