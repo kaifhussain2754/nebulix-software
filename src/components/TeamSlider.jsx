@@ -14,7 +14,7 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/kaif-hussain-739361236/'
   },
   {
-    image: './Mazahir.png',
+    image: './mazahir.png',
     name: 'Mazahir Attari',
     title: 'Co - Founder',
     description: 'Mike brings creativity to life, designing our path toward visual excellence.',
