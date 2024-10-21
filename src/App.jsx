@@ -35,12 +35,6 @@ const App = () => {
     setShowSplash(false); // Hide the splash screen after it finishes
   };
 
-  var $jq = jQuery.noConflict();
-// Now you can use $jq instead of $ for jQuery
-$jq(document).ready(function() {
-    // Your jQuery code here
-});
-
 
   return (
     <ThemeProvider theme={getTheme(isDarkMode ? 'dark' : 'light')}>

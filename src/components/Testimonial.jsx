@@ -1,16 +1,9 @@
-import React, { useState, useEffect } from "react";
-// Import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react"; // Import Swiper and SwiperSlide
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./testimonial.css"; // For custom styles
-
+import "./testimonial.css";
 // Testimonial data
 const testimonials = [
   {
@@ -90,31 +83,30 @@ const testimonials = [
 
 
 const TestimonialCards = () => {
-  useEffect(() => {
-    const initOwlCarousel = () => {
-      if (window.$(".owl-carousel").length) {
-        window.$(".owl-carousel").owlCarousel({
-          items: 1,
-          loop: true,
-          autoplay: true,
-          autoplayTimeout: 3000,
-          dots: true,
-          nav: true,
-          responsive: {
-            0: { items: 1 },
-            768: { items: 2 },
-            992: { items: 3 },
-          },
-        });
-      }
-    };
-    initOwlCarousel();
-  }, []);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 2 },
+      },
+      {
+        breakpoint: 992,
+        settings: { slidesToShow: 3 },
+      },
+    ],
+  };
 
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4 text-white">Hear From Our Clients</h2>
-      <div className="owl-carousel owl-theme">
+      <Slider {...settings}>
         {testimonials.map((testimonial) => (
           <div key={testimonial.id} className="testimonial-card">
             <div className="card-body text-center">
@@ -138,7 +130,7 @@ const TestimonialCards = () => {
             </div>
           </div>
         ))}
-      </div>
+      </Slider>
     </div>
   );
 };
