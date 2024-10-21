@@ -93,12 +93,25 @@ const TestimonialCards = () => {
     autoplaySpeed: 3000,
     responsive: [
       {
-        breakpoint: 768,
-        settings: { slidesToShow: 2 },
+        breakpoint: 768, // For devices with a max width of 768px
+        settings: { 
+          slidesToShow: 1, // Show only 1 card at a time
+          slidesToScroll: 1 
+        },
       },
       {
-        breakpoint: 992,
-        settings: { slidesToShow: 3 },
+        breakpoint: 992, // For devices with a max width of 992px
+        settings: { 
+          slidesToShow: 2, 
+          slidesToScroll: 1 
+        },
+      },
+      {
+        breakpoint: 1200, // Default breakpoint for larger screens
+        settings: { 
+          slidesToShow: 3, 
+          slidesToScroll: 1 
+        },
       },
     ],
   };

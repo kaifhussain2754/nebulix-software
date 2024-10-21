@@ -1,22 +1,17 @@
-body {
-  background-color: #121212; /* Dark background */
-  color: #f1f1f1; /* Light text color */
-}
-
 .testimonial-card {
   background-color: #1f1f1f; /* Dark card background */
   border-radius: 10px;
   padding: 20px;
-  margin: 15px; /* Adds spacing around each card */
-  box-shadow: 0px 4px 8px rgba(138, 43, 226, 0.8); /* Purple shadow for emphasis */
+  margin: 15px;
+  box-shadow: 0px 4px 8px rgba(138, 43, 226, 0.8); /* Purple shadow */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Center align items */
   transition: transform 0.3s;
 }
 
 .testimonial-card:hover {
-  transform: translateY(-8px); /* Slight lift effect on hover */
+  transform: translateY(-8px); /* Slight lift on hover */
 }
 
 .card-body {
@@ -27,7 +22,7 @@ body {
 .card-title {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #ffffff; /* Bright text color for titles */
+  color: #ffffff; /* Bright text color */
 }
 
 .card-role {
@@ -36,7 +31,7 @@ body {
 
 .card-text {
   font-style: italic;
-  text-align: justify;
+  text-align: center;
   font-size: 1rem;
   color: #d4d4d4; /* Slightly muted text */
 }
@@ -44,6 +39,11 @@ body {
 .rating span {
   font-size: 1.1rem; /* Slightly larger stars */
   color: #ffd700; /* Gold star color */
+}
+
+img.rounded-circle {
+  display: block;
+  margin: 0 auto; /* Center align the image */
 }
 
 .owl-theme .owl-dots .owl-dot span {
@@ -62,4 +62,53 @@ body {
 
 .owl-theme .owl-nav button:hover {
   background-color: #e55d50;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .card-title {
+    font-size: 1rem; /* Smaller title text */
+  }
+
+  .card-text {
+    font-size: 0.9rem; /* Smaller testimonial text */
+  }
+
+  img.rounded-circle {
+    width: 50px; /* Reduce image size for smaller devices */
+    height: 50px;
+  }
+
+  .rating span {
+    font-size: 1rem; /* Smaller star rating */
+  }
+}
+
+@media (max-width: 576px) {
+  .testimonial-card {
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .card-title {
+    font-size: 0.9rem; /* Further reduce title text */
+  }
+
+  .card-text {
+    font-size: 0.8rem; /* Further reduce testimonial text */
+  }
+
+  img.rounded-circle {
+    width: 40px; /* Reduce image size further */
+    height: 40px;
+  }
+
+  .rating span {
+    font-size: 0.9rem; /* Smaller stars for very small screens */
+  }
 }

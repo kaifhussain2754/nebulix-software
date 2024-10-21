@@ -42,6 +42,7 @@
   @media (max-width: 768px) {
     .service-card {
       padding: 1rem;
+      width: 100%;
     }
   
     .service-card-title {
