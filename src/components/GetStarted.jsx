@@ -4,14 +4,26 @@ import 'aos/dist/aos.css'; // Import AOS styles
 import './GetStarted.css'; // Import your CSS file
 import { pricingPlans } from './Pricing'; // Import pricingPlans
 import SuccessModal from './SuccessModal'; // Import SuccessModal component
+import { useLocation } from 'react-router-dom'; // Import useLocation to read query parameters
 
 export default function GetStarted() {
   const [result, setResult] = useState("");
   const [showSuccessModal, setShowSuccessModal] = useState(false); // State to control modal visibility
+  const [selectedService, setSelectedService] = useState(''); // State for selected service
+  const [customService, setCustomService] = useState(''); // State for custom service input
+
+  const location = useLocation(); // Get current location to retrieve query params
 
   useEffect(() => {
     AOS.init(); // Initialize AOS
-  }, []);
+
+    // Get the service from query parameters if available
+    const queryParams = new URLSearchParams(location.search);
+    const service = queryParams.get('service');
+    if (service) {
+      setSelectedService(service);
+    }
+  }, [location.search]); // Only rerun when location.search changes
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -32,6 +44,7 @@ export default function GetStarted() {
       setResult("Form Submitted Successfully");
       setShowSuccessModal(true); // Show success modal
       event.target.reset();
+      setCustomService(''); // Reset custom service input
     } else {
       console.log("Error", data);
       setResult(data.message);
@@ -81,15 +94,42 @@ export default function GetStarted() {
           {/* Full width fields */}
           <div className="form-group full-width">
             <label htmlFor="service">Select Service</label>
-            <select name="service" required>
+            <select
+              name="service"
+              required
+              value={selectedService}
+              onChange={(e) => {
+                const value = e.target.value;
+                setSelectedService(value);
+                if (value !== 'Other') {
+                  setCustomService(''); // Reset custom service if not "Other"
+                }
+              }}
+            >
               <option value="">Select Service</option>
               {pricingPlans.map((plan, index) => (
                 <option key={index} value={plan.name}>
                   {plan.name}
                 </option>
               ))}
+              <option value="Other">Other</option>
             </select>
           </div>
+
+          {/* Conditional input for custom service */}
+          {selectedService === 'Other' && (
+            <div className="form-group full-width">
+              <label htmlFor="custom_service">Please specify:</label>
+              <input
+                type="text"
+                name="custom_service"
+                placeholder="Type your service here"
+                value={customService}
+                onChange={(e) => setCustomService(e.target.value)}
+                required
+              />
+            </div>
+          )}
 
           <div className="form-group full-width">
             <label htmlFor="message">Your Message</label>

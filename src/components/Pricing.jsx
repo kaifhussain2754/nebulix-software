@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'aos/dist/aos.css'; // Import AOS styles
 import AOS from 'aos';
 import './Pricing.css';
+import { useNavigate } from 'react-router-dom';
 
 // Move pricingPlans array outside the Pricing component
 export const pricingPlans = [
@@ -256,11 +257,17 @@ const Pricing = () => {
   }, []);
 
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate(); // Use useNavigate hook for navigation
 
   // Filtered pricing plans based on search
   const filteredPlans = pricingPlans.filter(plan =>
     plan.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // Function to handle click and navigate to the /getstarted page with the selected service
+  const handleCardClick = (serviceName) => {
+    navigate('/getstarted', { state: { selectedService: serviceName } });
+  };
 
   return (
     <div className="container py-5">
@@ -280,7 +287,13 @@ const Pricing = () => {
       <div className="row">
         {filteredPlans.length > 0 ? (
           filteredPlans.map((plan, index) => (
-            <div className="col-md-4 mb-4" data-aos="fade-up" data-aos-delay={index * 100} key={index}>
+            <div
+              className="col-md-4 mb-4"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              key={index}
+              onClick={() => handleCardClick(plan.name)} // Handle click event
+            >
               <div className="pricing-card">
                 <h2>{plan.name}</h2>
                 <h3>
