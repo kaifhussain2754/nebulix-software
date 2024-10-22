@@ -8,7 +8,6 @@ const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const isSmallScreen = useMediaQuery('(max-width: 998px)');
-  const isExtraSmallScreen = useMediaQuery('(max-width: 576px)'); // New media query for extra small screens
 
   const controlNavbar = () => {
     if (typeof window !== 'undefined') {
@@ -40,31 +39,26 @@ const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
         }}
       >
         <Container>
-          <Navbar.Brand as={Link} to="/" style={{ fontFamily: 'Orbitron', fontWeight: '700', textShadow: '0 0 10px rgba(128, 0, 128, 1)' }}>
+          <Navbar.Brand as={Link} to="/" style={{ fontFamily: 'Orbitron', fontWeight: '700' , textShadow: '0 0 10px rgba(128, 0, 128, 1)' }}>
             <img 
               src="/./nebulix.png"
               alt="Nebulix Software Logo"
               style={{ width: '40px', marginRight: '10px' }}
             />
-            <span style={{ 
-              textShadow: '2px 2px 4px #800080', 
-              fontSize: isExtraSmallScreen ? '16px' : 'inherit' // Change font size for small screens
-            }}>
-              Nebulix Software
-            </span>
+            <span style={{textShadow: '2px 2px 4px #800080'}}>Nebulix Software</span>
           </Navbar.Brand>
 
           {/* Conditionally Render Navbar Links */}
           {!isSmallScreen ? (
             <Nav className="ml-auto">
-              <Nav.Link as={Link} to="/" style={{ color: 'white' }}>Home</Nav.Link>
-              <Nav.Link as={Link} to="/services" style={{ color: 'white' }}>Services</Nav.Link>
-              <Nav.Link as={Link} to="/about" style={{ color: 'white' }}>About</Nav.Link>
-              <Nav.Link as={Link} to="/getstarted" style={{ color: 'white' }}>Hire Us</Nav.Link>
-              <Nav.Link as={Link} to="/pricing" style={{ color: 'white' }}>Pricing</Nav.Link>
-              <Nav.Link as={Link} to="/portfolio" style={{ color: 'white' }}>Our Portfolio</Nav.Link>
-              <Nav.Link as={Link} to="/career" style={{ color: 'white' }}>Career</Nav.Link>
-              <Nav.Link as={Link} to="/contact-us" style={{ color: 'white' }}>Contact Us</Nav.Link>
+              <Nav.Link as={Link} to="/" style={{color: 'white'}}>Home</Nav.Link>
+              <Nav.Link as={Link} to="/services" style={{color: 'white'}}>Services</Nav.Link>
+              <Nav.Link as={Link} to="/about" style={{color: 'white'}}>About</Nav.Link>
+              <Nav.Link as={Link} to="/getstarted" style={{color: 'white'}}>Hire Us</Nav.Link>
+              <Nav.Link as={Link} to="/pricing" style={{color: 'white'}}>Pricing</Nav.Link>
+              <Nav.Link as={Link} to="/portfolio" style={{color: 'white'}}>Our Portfolio</Nav.Link>
+              <Nav.Link as={Link} to="/career" style={{color: 'white'}}>Career</Nav.Link>
+              <Nav.Link as={Link} to="/contact-us" style={{color: 'white'}}>Contact Us</Nav.Link>
             </Nav>
           ) : (
             <Navbar.Toggle 
@@ -75,7 +69,7 @@ const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
                 position: 'relative',
                 outline: 'none',
                 width: '45px',
-                height: '30px'
+                height: '40px'
               }}
             >
               <span style={{
