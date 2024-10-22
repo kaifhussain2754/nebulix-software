@@ -42,7 +42,7 @@ export default function GetStarted() {
     <div className="form-wrapper">
       {/* Text Container with Stylish Gradient Text */}
       <div className="text-container" data-aos="fade-right">
-        <h2 className="gradient-text">Get Started with our Services</h2>
+        <h2 className="gradient-text">Get Started With Us</h2>
         <p className="description">
           We offer a range of digital solutions including Web Development, App Development, 
           SEO, and Graphic Design. Our team is here to help you bring your ideas to life 
