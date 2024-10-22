@@ -8,7 +8,7 @@ const teamMembers = [
   {
     image: './KaifHussain.jpg',
     name: 'Kaif Hussain',
-    title: 'Founder & CEO',
+    title: 'Founder',
     description: 'Driven by innovation and passion, Kaif leads our team with a vision for the future.',
     email: 'example@example.com',
     linkedin: 'https://www.linkedin.com/in/kaif-hussain-739361236/'
