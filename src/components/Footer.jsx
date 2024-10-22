@@ -1,43 +1,5 @@
-import React, { useState } from 'react';
 import './Footer.css'; // Ensure this path is correct
-import SuccessModal from './SuccessModal'; // Import the SuccessModal component
 
-const Footer = () => {
-  const [email, setEmail] = useState(""); // State to hold the email input
-  const [result, setResult] = useState(""); // State to hold submission result
-  const [showSuccessModal, setShowSuccessModal] = useState(false); // State to control success modal
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value); // Update email state on input change
-  };
-
-  const handleNewsletterSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
-    setResult("Subscribing..."); // Update result message
-
-    const formData = new FormData();
-    formData.append("email", email);
-    formData.append("access_key", "27db761f-1475-4069-9ec2-8eecf7ffe1e6"); // Your access key
-
-    // Replace the URL with your newsletter subscription endpoint
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      setResult("Successfully subscribed!"); // Update success message
-      setShowSuccessModal(true); // Show the success modal
-      setEmail(""); // Clear the email input
-    } else {
-      console.log("Error", data);
-      setResult("Subscription failed. Please try again."); // Update error message
-    }
-  };
-
-  return (
     <div className="footer-container">
       <div className="footer">
         <div className="footer-content">
@@ -46,22 +8,7 @@ const Footer = () => {
             <div className="footer-column logo-column">
               <img src="./nebulix.png" alt="Logo" className="footer-logo" /> {/* Logo */}
             </div>
-            <div className="footer-column">
-              <div className="newsletter">
-                <h2>Subscribe to Our Newsletter</h2>
-                <form className="newsletter-form" onSubmit={handleNewsletterSubmit}>
-                  <input
-                    type="email"
-                    className="newsletter-input"
-                    placeholder="Email here"
-                    value={email}
-                    onChange={handleEmailChange} // Update email on input change
-                    required
-                  />
-                  <button type="submit" className="newsletter-btn">Submit</button>
-                </form>
-                {result && <p>{result}</p>} {/* Show submission result */}
-              </div>
+            
             </div>
           </div>
           <div className="footer-row">
@@ -127,15 +74,4 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      {/* Success Modal */}
-      <SuccessModal
-        showModal={showSuccessModal}
-        onClose={() => setShowSuccessModal(false)}
-        message="You have successfully subscribed to the newsletter!"
-      />
-    </div>
-  );
-};
-
 export default Footer;

@@ -198,3 +198,123 @@
       font-size: 14px; /* Reduce font size */
   }
 }
+
+/* Styles for devices with a width less than 300px */
+@media (max-width: 350px) {
+  .footer-row {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .footer-column {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+  .footer-logo {
+      max-width: 80px; /* Smaller logo size for very small screens */
+      margin-bottom: 10px;
+  }
+
+  .newsletter-input {
+      height: 35px; /* Smaller input field */
+      font-size: 12px; /* Adjust font size */
+  }
+
+  .newsletter-btn {
+      height: 35px; /* Smaller button */
+      padding: 0 10px;
+      font-size: 12px; /* Adjust button font size */
+  }
+
+  .footer-menu {
+      font-size: 12px; /* Adjust menu text size */
+  }
+
+  .footer-links a,
+  .footer-contact p {
+      font-size: 13px; /* Reduce text size */
+      margin-bottom: 8px; /* Reduce space between items */
+  }
+
+  .newsletter h2 {
+      font-size: 28px; /* Reduce heading size */
+  }
+
+  .footer-about h3,
+  .footer-links h3,
+  .footer-contact h3 {
+      font-size: 18px; /* Adjust headings */
+  }
+
+  .footer-social a {
+      margin-right: 10px;
+      font-size: 14px; /* Adjust icon size */
+  }
+
+  .footer-copyright p{
+    text-align: center;
+  }
+}
+
+/* Styles for devices with a width less than 268px */
+@media (max-width: 268px) {
+  .footer-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px; /* Reduce gap between items */
+  }
+
+  .footer-column {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 15px; /* Reduce margin between columns */
+  }
+
+  .footer-logo {
+      max-width: 70px; /* Further reduce logo size */
+      margin-bottom: 8px;
+  }
+
+  .newsletter-input {
+      height: 30px; /* Reduce input field size */
+      font-size: 11px; /* Adjust font size for input */
+  }
+
+  .newsletter-btn {
+      height: 30px; /* Reduce button size */
+      padding: 0 8px; /* Smaller padding */
+      font-size: 11px; /* Reduce button font size */
+  }
+
+  .footer-menu {
+      font-size: 11px; /* Further reduce menu text size */
+  }
+
+  .footer-links a,
+  .footer-contact p {
+      font-size: 12px; /* Smaller text size for links and contact */
+      margin-bottom: 6px; /* Reduce space between items */
+  }
+
+  .newsletter h2 {
+      font-size: 24px; /* Smaller newsletter heading size */
+  }
+
+  .footer-about h3,
+  .footer-links h3,
+  .footer-contact h3 {
+      font-size: 16px; /* Adjust heading size for very small screens */
+  }
+
+  .footer-social a {
+      margin-right: 8px; /* Smaller gap between social icons */
+      font-size: 12px; /* Reduce social icon size */
+  }
+
+  .footer-copyright p {
+      font-size: 11px; /* Adjust copyright text size */
+      text-align: center;
+  }
+}
