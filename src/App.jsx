@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"; // Import useState here
+import React, { useState, useEffect } from "react"; 
 import { ThemeProvider } from '@mui/material/styles';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
@@ -21,19 +21,69 @@ import GraphicDesign from "./components/GraphicDesign";
 import AndroidDevelopment from "./components/AndroidDevelopment";
 import IOSDevelopment from "./components/IOS";
 import ContactUs from "./components/ContactUs";
-import Chatbot from "./components/Chatbot"; // Import the Chatbot component
+import Chatbot from "./components/Chatbot"; 
+import NotificationCard from "./components/NotificationCard"; 
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [showSplash, setShowSplash] = useState(true);
+  const [openInquiryModal, setOpenInquiryModal] = useState(false);
+  const [notifications, setNotifications] = useState([]); 
+  const [currentIndex, setCurrentIndex] = useState(0); 
 
+  // Notification Data
+  const notificationsData = [
+    "Just completed order for web development",
+    "Just completed order for app development",
+    "New client signed up for UI/UX design services",
+    "Completed SEO optimization for client's website",
+    "Received positive feedback from the last project",
+    "Launched a new Android application successfully",
+    "Updated portfolio with recent projects",
+    "New inquiry received for graphic design services",
+    "Just completed order for iOS development",
+    "Finalized project scope with a new client",
+    "Just received payment for the last project",
+    "Started working on a new app development project",
+    "Scheduled a meeting with a potential client",
+    "Finished revisions on the web development project",
+    "Just completed a successful website launch",
+  ];
+
+  // Toggle Color Scheme
   const toggleColorScheme = () => {
     setIsDarkMode((prev) => !prev);
   };
 
+  // Handle Splash Finish
   const handleSplashFinish = () => {
     setShowSplash(false);
   };
+
+  // Notification Logic
+  useEffect(() => {
+    const notificationTimer = setInterval(() => {
+      const message = notificationsData[currentIndex % notificationsData.length];
+      setNotifications((prev) => [
+        ...prev,
+        { message, id: Date.now() }, // Include a unique id for each notification
+      ]);
+      setCurrentIndex((prevIndex) => prevIndex + 1);
+    }, 10000);
+
+    return () => clearInterval(notificationTimer);
+  }, [currentIndex]);
+
+  // Handle Notification Timeout
+  useEffect(() => {
+    if (notifications.length > 0) {
+      const timer = setTimeout(() => {
+        setNotifications((prev) => prev.slice(1)); // Remove the first notification after 2 seconds
+      }, 2000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [notifications]);
 
   return (
     <ThemeProvider theme={getTheme(isDarkMode ? 'dark' : 'light')}>
@@ -58,15 +108,28 @@ const App = () => {
             <Route path="/IOS" element={<IOSDevelopment />} />
             <Route path="/contact-us" element={<ContactUs />} />
           </Routes>
+          {/* Display notifications */}
+          <div className="notification-container" style={{ position: 'fixed', bottom: '20px', left: '20px', zIndex: 1000 }}>
+            {notifications.map((notification) => (
+              <NotificationCard 
+                key={notification.id} 
+                message={notification.message} 
+                style={{ 
+                  transform: 'translateX(0)', // Slide in from left
+                  opacity: 1,
+                  animation: 'slide-in 0.5s forwards' // Apply animation
+                }} 
+              />
+            ))}
+          </div>
         </main>
         <ConditionalFooter />
-        <Chatbot /> {/* Render the Chatbot component */}
+        <Chatbot />
       </Router>
     </ThemeProvider>
   );
 };
 
-// Conditional Footer Component
 const ConditionalFooter = () => {
   const location = useLocation();
   if (location.pathname === "/") {

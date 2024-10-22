@@ -23,6 +23,17 @@ html, body {
 .animate-rocket {
   animation: fly 0.5s ease forwards; /* Animation to move the rocket */
 }
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%); /* Start from the left off-screen */
+    opacity: 0; /* Start hidden */
+  }
+  100% {
+    transform: translateX(0); /* End at original position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
 
 /* Define the fly animation */
 @keyframes fly {
