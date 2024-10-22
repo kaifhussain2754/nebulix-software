@@ -23,7 +23,7 @@ const GraphicDesign = () => {
         {/* Image Section */}
         <div className="col-md-4" data-aos="fade-right"> {/* Add AOS data attribute */}
           <img 
-            src="./graphic.jpg" 
+            src="./Graphic.jpg" 
             alt="Graphic Design" 
             className="img-fluid rounded square-image" // Use the square-image class for 1:1 ratio
           />
