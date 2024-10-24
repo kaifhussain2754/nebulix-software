@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'aos/dist/aos.css'; // Import AOS styles
 import AOS from 'aos'; // Import AOS
+import CareerForm from './CareerFrom'
 
 const Careers = () => {
   const [showModal, setShowModal] = useState(false);
