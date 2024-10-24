@@ -43,7 +43,7 @@ import './Footer.css'; // Ensure this path is correct
                     <i className="fa fa-phone" aria-hidden="true"></i> +91 6376769600
                   </p>
                   <p>
-                    <i className="fa fa-envelope"></i> admin@nebulixsoftware.com
+                    <i className="fa fa-envelope"></i> nebulixsoftware@gmail.com
                   </p>
                   <div className="footer-social">
                     <a href="#"><i className="fab fa-twitter"></i></a>

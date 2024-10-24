@@ -52,7 +52,7 @@ export default function ContactUs() {
         </div>
         <div className="contact-item" style={{padding: '5px'}}>
           <FaEnvelope className="contact-icon" />
-          <span>admin@nebulixsoftware.com</span>
+          <span>nebulixsoftware@gmail.com</span>
         </div>
         <div className="contact-item" style={{padding: '5px'}}>
           <FaMapMarkerAlt className="contact-icon" />

@@ -88,7 +88,7 @@ const ContactForm = () => {
             <div className="address" style={{ marginTop: '20px' }}>
               <h4 style={{ marginBottom: '5px' }}>Contact Info</h4>
               <p>
-                <i className="fas fa-envelope" style={styles.icon}></i> admin@nebulixsoftware.com
+                <i className="fas fa-envelope" style={styles.icon}></i> nebulixsoftware@gmail.com
               </p>
               <p>
                 <i className="fas fa-phone" style={styles.icon}></i> +91 6376769600

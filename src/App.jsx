@@ -23,6 +23,7 @@ import IOSDevelopment from "./components/IOS";
 import ContactUs from "./components/ContactUs";
 import Chatbot from "./components/Chatbot"; 
 import NotificationCard from "./components/NotificationCard"; 
+import Careers from "./components/Careers";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -107,6 +108,7 @@ const App = () => {
             <Route path="/android" element={<AndroidDevelopment />} />
             <Route path="/IOS" element={<IOSDevelopment />} />
             <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/career" element={<Careers />} />
           </Routes>
           {/* Display notifications */}
           <div className="notification-container" style={{ position: 'fixed', bottom: '20px', left: '20px', zIndex: 1000 }}>

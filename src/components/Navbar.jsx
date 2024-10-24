@@ -56,7 +56,6 @@ const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
               <Nav.Link as={Link} to="/about" style={{color: 'white'}}>About</Nav.Link>
               <Nav.Link as={Link} to="/getstarted" style={{color: 'white'}}>Hire Us</Nav.Link>
               <Nav.Link as={Link} to="/pricing" style={{color: 'white'}}>Pricing</Nav.Link>
-              <Nav.Link as={Link} to="/portfolio" style={{color: 'white'}}>Our Portfolio</Nav.Link>
               <Nav.Link as={Link} to="/career" style={{color: 'white'}}>Career</Nav.Link>
               <Nav.Link as={Link} to="/contact-us" style={{color: 'white'}}>Contact Us</Nav.Link>
             </Nav>
@@ -114,7 +113,6 @@ const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
             <Nav.Link as={Link} to="/about" onClick={() => setExpanded(false)} style={{ color: isDarkMode ? '#fff' : '#333' }}>About</Nav.Link>
             <Nav.Link as={Link} to="/getstarted" onClick={() => setExpanded(false)} style={{ color: isDarkMode ? '#fff' : '#333' }}>Hire Us</Nav.Link>
             <Nav.Link as={Link} to="/pricing" onClick={() => setExpanded(false)} style={{ color: isDarkMode ? '#fff' : '#333' }}>Pricing</Nav.Link>
-            <Nav.Link as={Link} to="/portfolio" onClick={() => setExpanded(false)} style={{ color: isDarkMode ? '#fff' : '#333' }}>Our Portfolio</Nav.Link>
             <Nav.Link as={Link} to="/career" onClick={() => setExpanded(false)} style={{ color: isDarkMode ? '#fff' : '#333' }}>Career</Nav.Link>
             <Nav.Link as={Link} to="/contact-us" onClick={() => setExpanded(false)} style={{ color: isDarkMode ? '#fff' : '#333' }}>Contact Us</Nav.Link>
           </Nav>
