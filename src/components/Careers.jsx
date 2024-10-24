@@ -2,13 +2,25 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'aos/dist/aos.css'; // Import AOS styles
 import AOS from 'aos'; // Import AOS
-import CareerForm from './CareerFrom'; // Make sure to import the CareerForm component
 
 const Careers = () => {
   const [showModal, setShowModal] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     AOS.init(); // Initialize AOS
+
+    // Check screen width to apply mobile-specific font size
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Mobile if screen width is <= 768px
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set initial value based on screen size
+
+    return () => {
+      window.removeEventListener('resize', handleResize); // Clean up listener on unmount
+    };
   }, []);
 
   const roles = [
@@ -60,10 +72,18 @@ const Careers = () => {
     textDecoration: 'none',
   };
 
+  // Inline style for the heading, with a dynamic font size based on device
+  const headingStyle = {
+    fontSize: isMobile ? '21px' : '2.5rem',
+    marginTop: '20px',
+  };
+
   return (
     <div className="bg-dark text-light py-5">
       <div className="container">
-        <h1 className="text-center mb-4" style={{ marginTop: '20px' }}>Careers at Nebulix Software</h1>
+        <h1 className="text-center mb-4" style={headingStyle}>
+          Careers at Nebulix Software
+        </h1>
         <p className="lead text-center mb-5">
           Join our innovative team and help us create the future of software solutions.
         </p>
