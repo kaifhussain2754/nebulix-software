@@ -70,7 +70,7 @@ const App = () => {
         { message, id: Date.now() }, // Include a unique id for each notification
       ]);
       setCurrentIndex((prevIndex) => prevIndex + 1);
-    }, 10000);
+    }, 20000);
 
     return () => clearInterval(notificationTimer);
   }, [currentIndex]);
