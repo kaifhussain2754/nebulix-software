@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import 'aos/dist/aos.css';
 import AOS from 'aos';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 
 function PricingCalculator() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ function PricingCalculator() {
     adminPanel: false,
   });
   const [price, setPrice] = useState(null);
+  const [calculated, setCalculated] = useState(false); // State to track if price has been calculated
+  const navigate = useNavigate(); // Initialize useNavigate for navigation
 
   useEffect(() => {
     AOS.init({
@@ -55,6 +58,11 @@ function PricingCalculator() {
     if (formData.adminPanel) totalPrice += 3000;
 
     setPrice(totalPrice);
+    setCalculated(true); // Set calculated to true after calculating the price
+  };
+
+  const handleBookNow = () => {
+    navigate('/getstarted'); // Navigate to /getstarted
   };
 
   return (
@@ -70,7 +78,7 @@ function PricingCalculator() {
         margin: "auto",
         color: "#f8f9fa",
         boxSizing: "border-box",
-        marginTop: "60px"
+        marginTop: "110px"
       }}
     >
       <h2
@@ -78,7 +86,7 @@ function PricingCalculator() {
         style={{
           textAlign: "center",
           fontFamily: "'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif",
-          margin: "10px 0 30px",
+          margin: "20px 0 30px",
           fontSize: "28px",
           fontWeight: 800
         }}
@@ -209,15 +217,35 @@ function PricingCalculator() {
       </button>
 
       {price !== null && (
-  <>
-    <h3 style={{ marginTop: "20px", color: "lightgreen", textAlign: "center" }}>
-      Total Cost: Rs {price}
-    </h3>
-    <p style={{ color: "#f8f9fa", textAlign: "center", fontSize: "14px", marginTop: "10px" }}>
-      Note: These prices are not exact and may vary; they are negotiable.
-    </p>
-  </>
-)}
+        <>
+          <h3 style={{ marginTop: "20px", color: "lightgreen", textAlign: "center" }}>
+            Total Cost: Rs {price}
+          </h3>
+          <p style={{ color: "#f8f9fa", textAlign: "center", fontSize: "14px", marginTop: "10px" }}>
+            Note: These prices are not exact and may vary; they are negotiable.
+          </p>
+
+          {/* Book Now Button */}
+          <button
+            onClick={handleBookNow}
+            style={{
+              padding: "10px 15px",
+              borderRadius: "20px",
+              border: "0",
+              background: "orange",
+              color: "white",
+              cursor: "pointer",
+              marginTop: "1rem",
+              transition: "background-color 0.3s",
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto"
+            }}
+          >
+            Book Now
+          </button>
+        </>
+      )}
     </div>
   );
 }

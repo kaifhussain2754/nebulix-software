@@ -76,7 +76,7 @@ const Careers = () => {
   // Inline style for the heading, with a dynamic font size based on device
   const headingStyle = {
     fontSize: isMobile ? '21px' : '2.5rem',
-    marginTop: '20px',
+    marginTop: '50px',
   };
 
   return (

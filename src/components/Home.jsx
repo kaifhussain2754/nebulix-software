@@ -18,7 +18,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home-container" style={{ marginTop: '50px' }}> {/* Add top margin here */}
+    <div className="home-container" style={{ marginTop: '100px' }}> {/* Add top margin here */}
       {/* React Helmet for SEO */}
       <Helmet>
         <meta name="description" content="Discover innovative IT solutions to enhance your online visibility and grow your business. Join the revolution in transforming IT strategies." />

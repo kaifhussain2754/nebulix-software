@@ -27,16 +27,6 @@
             }}
             />
             This Diwali Get 10% Off on all our services!
-            <img
-            src="/diwali.png" // Path to your lamp icon image
-            alt="Lamp Icon"
-            style={{
-                width: '30px', // Set the desired width
-                height: '30px', // Set the desired height
-                marginLeft: '10px', // Space between icon and text
-                verticalAlign: 'middle' // Aligns the icon with the text
-            }}
-            />
         </Marquee>
         </div>
     );
