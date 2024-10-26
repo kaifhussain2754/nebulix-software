@@ -185,7 +185,7 @@ function PricingCalculator() {
           onChange={handleChange}
           style={{ marginRight: "8px" }}
         />
-        <label>Advanced Admin Panel (Rs 3000)</label>
+        <label>Advanced Admin Panel</label>
       </div>
 
       <button
