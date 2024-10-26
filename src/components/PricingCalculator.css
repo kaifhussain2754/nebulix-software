@@ -1,0 +1,128 @@
+.pricing-calculator-container {
+    width: 90%; /* Responsive width */
+    max-width: 350px; /* Max width */
+    height: auto; /* Auto height */
+    background-color: #212529; /* Dark background */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; /* Shadow effect */
+    border-radius: 10px; /* Rounded corners */
+    box-sizing: border-box; /* Box sizing */
+    padding: 20px 30px; /* Padding */
+    margin: auto; /* Center the container with top margin */
+    color: #f8f9fa; /* Text color */
+  }
+  
+  label {
+    text-align: center; /* Center-align labels */
+    width: 100%; /* Full width for labels */
+  }
+  
+  
+  .pricing-calculator-title {
+    text-align: center; /* Center title */
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif; /* Font family */
+    margin: 10px 0 30px 0; /* Margin */
+    font-size: 28px; /* Title size */
+    font-weight: 800; /* Title weight */
+  }
+  
+  .pricing-calculator-form {
+    width: 100%; /* Full width */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Column direction */
+    gap: 18px; /* Space between elements */
+    margin-bottom: 15px; /* Bottom margin */
+  }
+  
+  .pricing-calculator-input {
+    border-radius: 20px; /* Rounded corners for input */
+    border: 1px solid #c0c0c0; /* Border */
+    outline: 0 !important; /* No outline */
+    box-sizing: border-box; /* Box sizing */
+    padding: 12px 15px; /* Padding */
+    background-color: #343a40; /* Dark input background */
+    color: #f8f9fa; /* Input text color */
+  }
+  
+  .pricing-calculator-link {
+    text-decoration: underline; /* Underline link */
+    margin: 0; /* No margin */
+    text-align: end; /* Align text to the end */
+    color: #747474; /* Link color */
+    text-decoration-color: #747474; /* Underline color */
+  }
+  
+  .pricing-calculator-button {
+    padding: 10px 15px; /* Button padding */
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif; /* Font family */
+    border-radius: 20px; /* Rounded corners */
+    border: 0 !important; /* No border */
+    outline: 0 !important; /* No outline */
+    background: teal; /* Button background */
+    color: white; /* Button text color */
+    cursor: pointer; /* Pointer on hover */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; /* Shadow effect */
+    transition: background-color 0.3s; /* Transition effect for hover */
+  }
+  
+  .pricing-calculator-button:hover {
+    background-color: #007b7f; /* Darken button on hover */
+  }
+  
+  .pricing-calculator-button:active {
+    box-shadow: none; /* No shadow on active */
+  }
+  
+  .pricing-calculator-buttons-container {
+    width: 100%; /* Full width */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Column direction */
+    justify-content: flex-start; /* Start alignment */
+    margin-top: 20px; /* Top margin */
+    gap: 15px; /* Space between buttons */
+  }
+  
+  .pricing-calculator-step-1,
+  .pricing-calculator-step-2 {
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Column direction */
+    align-items: center; /* Center alignment */
+  }
+  
+  .pricing-calculator-step-2 {
+    text-align: center; /* Center text */
+  }
+  
+  .pricing-calculator-check {
+    display: flex; /* Flexbox layout */
+    align-items: center; /* Center vertically */
+  }
+  
+  .pricing-calculator-check-input {
+    margin-right: 8px; /* Space between checkbox and label */
+  }
+  
+  .pricing-calculator-text {
+    font-size: 9px; /* Text size */
+    color: #747474; /* Text color */
+    margin-top: 5px; /* Top margin */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 400px) {
+    .pricing-calculator-container {
+      padding: 15px 20px; /* Adjust padding for smaller screens */
+    }
+  
+    .pricing-calculator-title {
+      font-size: 24px; /* Adjust title size for smaller screens */
+    }
+  
+    .pricing-calculator-input {
+      padding: 10px 12px; /* Adjust input padding for smaller screens */
+    }
+  
+    .pricing-calculator-button {
+      padding: 8px 12px; /* Adjust button padding for smaller screens */
+    }
+  }
+  

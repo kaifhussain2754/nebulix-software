@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SuccessModal from './SuccessModal'; // Import your SuccessModal component
+import './CareerForm.css'
 
 const CareerForm = ({ closeModal }) => {
   const [formData, setFormData] = useState({
@@ -18,6 +18,7 @@ const CareerForm = ({ closeModal }) => {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false); // State to track submission
   const [showSuccessModal, setShowSuccessModal] = useState(false); // State for success modal
+  const [result, setResult] = useState(''); // State for submission result
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,7 +71,8 @@ const CareerForm = ({ closeModal }) => {
 
       const result = await response.json();
       if (result.success) {
-        setShowSuccessModal(true); // Open success modal
+        setResult("Form Submitted Successfully");
+        setShowSuccessModal(true); // Show success modal
         closeModal(); // Close form modal
       } else {
         alert(`Form submission failed: ${result.message}`);
@@ -83,176 +85,126 @@ const CareerForm = ({ closeModal }) => {
     }
   };
 
-  // Inline styles for overlay
-  const overlayStyle = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+  const styles = {
+    modalContent: {
+      backgroundColor: '#2a2a2a', // Dark background for modal
+      color: '#f5f5f5', // Light text color
+      borderRadius: '5px',
+      padding: '2rem', // Increased padding
+      border: '1px solid #444',
+    },
+    formControl: {
+      background: 'none',
+      color: '#f5f5f5',
+      border: 'none',
+      borderBottom: '2px solid #f5f5f5',
+    },
+    button: {
+      backgroundColor: '#000',
+      color: 'white',
+      fontWeight: 'bold',
+      borderRadius: '5px',
+      border: 'none',
+      width: '100%',
+      padding: '10px 20px',
+      marginTop: '10px',
+    },
   };
 
   return (
-    <div className="modal fade show" style={{ display: 'block' }} tabIndex="-1">
+    <div className="modal fade show" style={{ display: 'block', zIndex: 1050 }} tabIndex="-1">
+      <div className="modal-bg" /> {/* Blur background overlay */}
       <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content bg-dark text-light">
+        <div className="modal-content" style={styles.modalContent}>
           <div className="modal-header">
             <h5 className="modal-title">Career Application Form</h5>
             <button type="button" className="btn-close text-white" onClick={closeModal}></button>
           </div>
           <div className="modal-body">
             <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label className="form-label">Name</label>
-                <input
-                  type="text"
-                  className={`form-control ${formErrors.name ? 'is-invalid' : ''}`}
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-                {formErrors.name && <div className="invalid-feedback">{formErrors.name}</div>}
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input
-                  type="email"
-                  className={`form-control ${formErrors.email ? 'is-invalid' : ''}`}
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-                {formErrors.email && <div className="invalid-feedback">{formErrors.email}</div>}
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Phone</label>
-                <input
-                  type="tel"
-                  className={`form-control ${formErrors.phone ? 'is-invalid' : ''}`}
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-                {formErrors.phone && <div className="invalid-feedback">{formErrors.phone}</div>}
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Experience Level</label>
-                <div>
-                  <label>
-                    <input
-                      type="radio"
-                      name="experienceLevel"
-                      value="Intern"
+              {/** Form Fields */}
+              {[
+                { label: 'Name', type: 'text', name: 'name', placeholder: '' },
+                { label: 'Email', type: 'email', name: 'email', placeholder: '' },
+                { label: 'Phone', type: 'tel', name: 'phone', placeholder: '' },
+                {
+                  label: 'Experience Level',
+                  type: 'radio',
+                  name: 'experienceLevel',
+                  options: [
+                    { label: 'Intern', value: 'Intern' },
+                    { label: 'Experienced', value: 'Experienced' },
+                    { label: 'Fresher', value: 'Fresher' },
+                  ],
+                },
+                {
+                  label: 'Select Role',
+                  type: 'select',
+                  name: 'selectedRole',
+                  options: [
+                    { label: 'Select a role', value: '' },
+                    { label: 'Frontend Developer', value: 'Frontend Developer' },
+                    { label: 'Backend Developer', value: 'Backend Developer' },
+                    { label: 'Python Developer', value: 'Python Developer' },
+                    { label: 'Java Developer', value: 'Java Developer' },
+                    { label: 'React.js', value: 'React.js' },
+                    { label: 'Node.js', value: 'Node.js' },
+                    { label: 'Other', value: 'Other' },
+                  ],
+                },
+                { label: 'Message', type: 'textarea', name: 'message', placeholder: '' },
+                { label: 'Link for Resume', type: 'url', name: 'resumeLink', placeholder: 'Enter the URL of your resume' },
+                { label: 'LinkedIn Link (Optional)', type: 'url', name: 'linkedin', placeholder: 'Enter your LinkedIn profile URL' },
+                { label: 'GitHub Link (Optional)', type: 'url', name: 'github', placeholder: 'Enter your GitHub profile URL' },
+              ].map((field, index) => (
+                <div className="mb-3" key={index}>
+                  <label className="form-label">{field.label}</label>
+                  {field.type === 'radio' ? (
+                    <div>
+                      {field.options.map((option, idx) => (
+                        <label key={idx} className="me-3">
+                          <input
+                            type="radio"
+                            name={field.name}
+                            value={option.value}
+                            onChange={handleChange}
+                          /> {option.label}
+                        </label>
+                      ))}
+                      {formErrors[field.name] && <div className="text-danger">{formErrors[field.name]}</div>}
+                    </div>
+                  ) : field.type === 'select' ? (
+                    <select
+                      className={`form-select ${formErrors[field.name] ? 'is-invalid' : ''}`}
+                      name={field.name}
+                      value={formData[field.name]}
                       onChange={handleChange}
-                    /> Intern
-                  </label>
-                  <label className="ms-3">
+                    >
+                      {field.options.map((option, idx) => (
+                        <option key={idx} value={option.value}>{option.label}</option>
+                      ))}
+                    </select>
+                  ) : (
                     <input
-                      type="radio"
-                      name="experienceLevel"
-                      value="Experienced"
+                      type={field.type}
+                      className={`form-control ${formErrors[field.name] ? 'is-invalid' : ''}`}
+                      name={field.name}
+                      value={formData[field.name]}
                       onChange={handleChange}
-                    /> Experienced
-                  </label>
-                  <label className="ms-3">
-                    <input
-                      type="radio"
-                      name="experienceLevel"
-                      value="Fresher"
-                      onChange={handleChange}
-                    /> Fresher
-                  </label>
+                      placeholder={field.placeholder}
+                      style={styles.formControl}
+                    />
+                  )}
+                  {formErrors[field.name] && <div className="text-danger">{formErrors[field.name]}</div>}
                 </div>
-                {formErrors.experienceLevel && <div className="text-danger">{formErrors.experienceLevel}</div>}
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Select Role</label>
-                <select
-                  className={`form-select ${formErrors.selectedRole ? 'is-invalid' : ''}`}
-                  name="selectedRole"
-                  value={formData.selectedRole}
-                  onChange={handleChange}
-                >
-                  <option value="">Select a role</option>
-                  <option value="Frontend Developer">Frontend Developer</option>
-                  <option value="Backend Developer">Backend Developer</option>
-                  <option value="Python Developer">Python Developer</option>
-                  <option value="Java Developer">Java Developer</option>
-                  <option value="React.js">React.js</option>
-                  <option value="Node.js">Node.js</option>
-                  <option value="Other">Other</option>
-                </select>
-                {formErrors.selectedRole && <div className="invalid-feedback">{formErrors.selectedRole}</div>}
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Message</label>
-                <textarea
-                  className={`form-control ${formErrors.message ? 'is-invalid' : ''}`}
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                />
-                {formErrors.message && <div className="invalid-feedback">{formErrors.message}</div>}
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">Link for Resume</label>
-                <input
-                  type="url"
-                  className={`form-control ${formErrors.resumeLink ? 'is-invalid' : ''}`}
-                  name="resumeLink"
-                  value={formData.resumeLink}
-                  onChange={handleChange}
-                  placeholder="Enter the URL of your resume"
-                />
-                {formErrors.resumeLink && <div className="invalid-feedback">{formErrors.resumeLink}</div>}
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">LinkedIn Link (Optional)</label>
-                <input
-                  type="url"
-                  className="form-control"
-                  name="linkedin"
-                  value={formData.linkedin}
-                  onChange={handleChange}
-                  placeholder="Enter your LinkedIn profile URL"
-                />
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">GitHub Link (Optional)</label>
-                <input
-                  type="url"
-                  className="form-control"
-                  name="github"
-                  value={formData.github}
-                  onChange={handleChange}
-                  placeholder="Enter your GitHub profile URL"
-                />
-              </div>
-
-              <div className="mb-3 text-center"> {/* Centering the button */}
-                <button
-                  type="submit"
-                  className="btn btn-light" // Changed to light button
-                  disabled={isSubmitting} // Disable button while submitting
-                >
-                  {isSubmitting ? 'Sending...' : 'Submit'}
-                </button>
-              </div>
+              ))}
+              <button type="submit" className="btn" style={styles.button} disabled={isSubmitting}>
+                {isSubmitting ? 'Submitted!' : 'Submit'}
+              </button>
             </form>
           </div>
         </div>
       </div>
-      {isSubmitting && <div style={overlayStyle} />} {/* Overlay for background */}
-      {showSuccessModal && <SuccessModal closeModal={() => setShowSuccessModal(false)} />} {/* Success modal */}
     </div>
   );
 };

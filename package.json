@@ -24,6 +24,7 @@
     "@nextui-org/theme": "^2.2.11",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
+    "fireworks-js": "^2.10.8",
     "framer-motion": "^11.11.9",
     "next": "^15.0.0",
     "owl.carousel": "^2.3.4",

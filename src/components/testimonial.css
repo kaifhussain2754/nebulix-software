@@ -44,6 +44,7 @@
 img.rounded-circle {
   display: block;
   margin: 0 auto; /* Center align the image */
+  object-fit: cover;
 }
 
 .owl-theme .owl-dots .owl-dot span {

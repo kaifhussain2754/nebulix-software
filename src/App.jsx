@@ -24,6 +24,7 @@ import ContactUs from "./components/ContactUs";
 import Chatbot from "./components/Chatbot"; 
 import NotificationCard from "./components/NotificationCard"; 
 import Careers from "./components/Careers";
+import PricingIntro from "./components/PricingIntro";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -97,7 +98,7 @@ const App = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/pricing" element={<PricingIntro />} />
             <Route path="/getstarted" element={<GetStarted />} />
             <Route path="/contact" element={<ContactForm />} />
             <Route path="/web" element={<WebDevelopment />} />
