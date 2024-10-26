@@ -9,7 +9,6 @@ import Home from "./components/Home";
 import Services from "./components/Services"; 
 import AboutUs from "./components/AboutUs";
 import Portfolio from "./components/Portfolio";
-import Pricing from "./components/Pricing";
 import Footer from "./components/Footer";
 import GetStarted from "./components/GetStarted";
 import ContactForm from "./components/ContactForm";
@@ -25,6 +24,7 @@ import Chatbot from "./components/Chatbot";
 import NotificationCard from "./components/NotificationCard"; 
 import Careers from "./components/Careers";
 import PricingIntro from "./components/PricingIntro";
+import FeatureNotification from './components/FeatureNotification';
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -128,6 +128,7 @@ const App = () => {
         </main>
         <ConditionalFooter />
         <Chatbot />
+        <FeatureNotification />
       </Router>
     </ThemeProvider>
   );
