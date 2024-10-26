@@ -21,8 +21,8 @@ const FeatureNotification = () => {
   }, []);
 
   const handleCheckNowClick = () => {
-    // Navigate to the pricing page
-    navigate('/pricing'); // Update the path as needed
+    setShowNotification(false); // Close the notification first
+    navigate('/pricing'); // Navigate to the pricing page
   };
 
   const handleCloseClick = () => {
@@ -104,7 +104,7 @@ const FeatureNotification = () => {
         <div style={buttonContainerStyle}>
           <button
             style={buttonStyle}
-            onClick={handleCheckNowClick}
+            onClick={handleCheckNowClick} // Close notification and navigate
           >
             Check Now!
           </button>

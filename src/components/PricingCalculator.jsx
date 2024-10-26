@@ -26,40 +26,81 @@ function PricingCalculator() {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === "checkbox" ? checked : (name === "monthlyUsers" ? Number(value) : (name === "maintenance" ? Number(value) : value)),
     });
   };
+  
+  
 
   const calculatePrice = () => {
     let totalPrice = 0;
-
+  
     // Monthly Users (includes hosting)
-    if (formData.monthlyUsers === 25000) totalPrice += 3000;
-    else if (formData.monthlyUsers === 100000) totalPrice += 5000;
-    else if (formData.monthlyUsers === 200000) totalPrice += 11000;
-
+    if (formData.monthlyUsers === 25000) {
+      totalPrice += 3000;
+      console.log("Added for 25,000 users: ₹3,000");
+    } else if (formData.monthlyUsers === 100000) {
+      totalPrice += 5000;
+      console.log("Added for 100,000 users: ₹5,000");
+    } else if (formData.monthlyUsers === 200000) {
+      totalPrice += 11000;
+      console.log("Added for 200,000 users: ₹11,000");
+    }
+  
     // Functionality
-    if (formData.functionality === "basic") totalPrice += 3000;
-    else if (formData.functionality === "advanced") totalPrice += 10000;
-    else if (formData.functionality === "dynamic") totalPrice += 15000;
-    else if (formData.functionality === "ecommerce") totalPrice += 20000;
-
-    // Maintenance
-    if (formData.maintenance === 1) totalPrice += 800;
-    else if (formData.maintenance === 3) totalPrice += 2000;
-    else if (formData.maintenance === 6) totalPrice += 4000;
-    else if (formData.maintenance === 12) totalPrice += 9000;
-
-    // Extra Pages: First 10 pages are free, additional pages are Rs 500 each
+    if (formData.functionality === "basic") {
+      totalPrice += 3000;
+      console.log("Added for Basic (Static): ₹3,000");
+    } else if (formData.functionality === "advanced") {
+      totalPrice += 10000;
+      console.log("Added for Advanced (Dynamic): ₹10,000");
+    } else if (formData.functionality === "dynamic") {
+      totalPrice += 15000;
+      console.log("Added for Dynamic Web Application: ₹15,000");
+    } else if (formData.functionality === "ecommerce") {
+      totalPrice += 20000;
+      console.log("Added for E-Commerce: ₹20,000");
+    }
+  
+    // Log the maintenance value
+    console.log(`Selected Maintenance: ${formData.maintenance}`);
+  
+    if (formData.maintenance > 0) {
+      if (formData.maintenance === 1) {
+        totalPrice += 800;
+        console.log("Added for 1 Month Maintenance: ₹800");
+      } else if (formData.maintenance === 3) {
+        totalPrice += 2000;
+        console.log("Added for 3 Months Maintenance: ₹2,000");
+      } else if (formData.maintenance === 6) {
+        totalPrice += 4000;
+        console.log("Added for 6 Months Maintenance: ₹4,000");
+      } else if (formData.maintenance === 12) {
+        totalPrice += 9000;
+        console.log("Added for 12 Months Maintenance: ₹9,000");
+      }
+    } else {
+      console.log("No maintenance selected.");
+    }
+  
+    // Extra Pages: First 10 pages are free, additional pages are ₹500 each
     const extraPages = Math.max(0, formData.totalPages - 10);
     totalPrice += extraPages * 500;
-
+    console.log(`Added for Extra Pages: ₹${extraPages * 500}`);
+  
     // Advanced Admin Panel
-    if (formData.adminPanel) totalPrice += 3000;
-
-    setPrice(totalPrice);
-    setCalculated(true); // Set calculated to true after calculating the price
+    if (formData.adminPanel) {
+      totalPrice += 3000;
+      console.log("Added for Advanced Admin Panel: ₹3,000");
+    }
+  
+    // Log the final price
+    console.log(`Total Price Calculated: ₹${totalPrice}`);
+    setPrice(totalPrice); // Set the total price
+    setCalculated(true); // Indicate that the price has been calculated
   };
+  
+  
 
   const handleBookNow = () => {
     navigate('/getstarted'); // Navigate to /getstarted
@@ -140,28 +181,29 @@ function PricingCalculator() {
       </div>
 
       {/* Maintenance */}
-      <div style={{ marginBottom: "1rem" }}>
-        <label style={{ width: "100%", textAlign: "center" }}>Maintenance & Support:</label>
-        <select
-          name="maintenance"
-          value={formData.maintenance}
-          onChange={handleChange}
-          style={{
-            width: "100%",
-            borderRadius: "20px",
-            border: "1px solid #c0c0c0",
-            padding: "12px 15px",
-            backgroundColor: "#343a40",
-            color: "#f8f9fa"
-          }}
-        >
-          <option value={0}>No Maintenance</option>
-          <option value={1}>1 Month</option>
-          <option value={3}>3 Months</option>
-          <option value={6}>6 Months</option>
-          <option value={12}>12 Months</option>
-        </select>
-      </div>
+<div style={{ marginBottom: "1rem" }}>
+  <label style={{ width: "100%", textAlign: "center" }}>Maintenance & Support:</label>
+  <select
+    name="maintenance"
+    value={formData.maintenance}
+    onChange={handleChange}
+    style={{
+      width: "100%",
+      borderRadius: "20px",
+      border: "1px solid #c0c0c0",
+      padding: "12px 15px",
+      backgroundColor: "#343a40",
+      color: "#f8f9fa"
+    }}
+  >
+    <option value={0}>No Maintenance</option>
+    <option value={1}>1 Month</option>
+    <option value={3}>3 Months</option>
+    <option value={6}>6 Months</option>
+    <option value={12}>12 Months</option>
+  </select>
+</div>
+
 
       {/* Total Pages */}
       <div style={{ marginBottom: "1rem", textAlign: "center" }}>
