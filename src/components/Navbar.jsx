@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container, Offcanvas } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from '@mui/material';
+import AnimatedBanner from './AnimatedBanner'; // Import the AnimatedBanner component
 
 const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
   const [expanded, setExpanded] = useState(false);
@@ -27,25 +28,30 @@ const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
 
   return (
     <>
+      {/* Animated Offer Banner */}
+      <AnimatedBanner />
+
       <Navbar
         expand="lg"
         bg={isDarkMode ? "black" : "light"}
         variant={isDarkMode ? "dark" : "light"}
         fixed="top"
         style={{ 
-          top: visible ? '0' : '-64px', 
+          top: visible ? '0' : '-64px', // Adjust for the banner height
           transition: 'top 0.3s', 
           boxShadow: '0 4px 20px rgba(255, 255, 255, 0.2)',
+          zIndex: 998, // Ensure navbar is below the banner
+          marginTop: '50px', // Adjust the margin-top for the navbar
         }}
       >
         <Container>
           <Navbar.Brand as={Link} to="/" style={{ fontFamily: 'Orbitron', fontWeight: '700' , textShadow: '0 0 10px rgba(128, 0, 128, 1)' }}>
             <img 
-              src="/./nebulix.png"
+              src="/nebulix.png" // Adjusted path for the logo
               alt="Nebulix Software Logo"
               style={{ width: '40px', marginRight: '10px' }}
             />
-            <span style={{textShadow: '2px 2px 4px #800080'}}>Nebulix Software</span>
+            <span style={{ textShadow: '2px 2px 4px #800080' }}>Nebulix Software</span>
           </Navbar.Brand>
 
           {/* Conditionally Render Navbar Links */}

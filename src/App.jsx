@@ -25,6 +25,7 @@ import NotificationCard from "./components/NotificationCard";
 import Careers from "./components/Careers";
 import PricingIntro from "./components/PricingIntro";
 import FeatureNotification from './components/FeatureNotification';
+import AnimatedBanner from "./components/AnimatedBanner";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
