@@ -65,9 +65,6 @@ function PricingIntro() {
               <strong>Functionality Level</strong>: Choose from basic or advanced options to meet your needs.
             </li>
             <li style={{ marginBottom: "0.75em" }}>
-              <strong>Hosting</strong>: Optional hosting service for convenience.
-            </li>
-            <li style={{ marginBottom: "0.75em" }}>
               <strong>Maintenance</strong>: Add ongoing support to keep your website updated.
             </li>
           </ul>
