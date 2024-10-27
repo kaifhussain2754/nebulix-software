@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { auth, googleProvider } from './FirebaseConfig';
+import { signInWithPopup } from "firebase/auth";
 
 function PricingCalculator() {
   const [formData, setFormData] = useState({
@@ -13,6 +15,7 @@ function PricingCalculator() {
   });
   const [price, setPrice] = useState(null);
   const [calculated, setCalculated] = useState(false); // State to track if price has been calculated
+  const [isSignedIn, setIsSignedIn] = useState(false); // State to track if user is signed in
   const navigate = useNavigate(); // Initialize useNavigate for navigation
 
   useEffect(() => {
@@ -20,7 +23,25 @@ function PricingCalculator() {
       duration: 1000,
       once: true,
     });
+
+    // Check local storage for sign-in status on component mount
+    const signedIn = localStorage.getItem('isSignedIn');
+    if (signedIn === 'true') {
+      setIsSignedIn(true); // Set signed-in state to true if found in local storage
+    }
   }, []);
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      setIsSignedIn(true); // Set signed-in state to true
+      localStorage.setItem('isSignedIn', 'true'); // Save sign-in status in local storage
+      console.log("Signed in as:", result.user.displayName);
+      calculatePrice(); // Call calculatePrice after sign in
+    } catch (error) {
+      console.error("Google sign-in error:", error);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -29,12 +50,10 @@ function PricingCalculator() {
       [name]: type === "checkbox" ? checked : (name === "monthlyUsers" ? Number(value) : (name === "maintenance" ? Number(value) : value)),
     });
   };
-  
-  
 
   const calculatePrice = () => {
     let totalPrice = 0;
-  
+
     // Monthly Users (includes hosting)
     if (formData.monthlyUsers === 25000) {
       totalPrice += 3000;
@@ -46,7 +65,7 @@ function PricingCalculator() {
       totalPrice += 11000;
       console.log("Added for 200,000 users: ₹11,000");
     }
-  
+
     // Functionality
     if (formData.functionality === "basic") {
       totalPrice += 3000;
@@ -61,10 +80,10 @@ function PricingCalculator() {
       totalPrice += 20000;
       console.log("Added for E-Commerce: ₹20,000");
     }
-  
+
     // Log the maintenance value
     console.log(`Selected Maintenance: ${formData.maintenance}`);
-  
+
     if (formData.maintenance > 0) {
       if (formData.maintenance === 1) {
         totalPrice += 800;
@@ -82,25 +101,23 @@ function PricingCalculator() {
     } else {
       console.log("No maintenance selected.");
     }
-  
+
     // Extra Pages: First 10 pages are free, additional pages are ₹500 each
     const extraPages = Math.max(0, formData.totalPages - 10);
     totalPrice += extraPages * 500;
     console.log(`Added for Extra Pages: ₹${extraPages * 500}`);
-  
+
     // Advanced Admin Panel
     if (formData.adminPanel) {
       totalPrice += 3000;
       console.log("Added for Advanced Admin Panel: ₹3,000");
     }
-  
+
     // Log the final price
     console.log(`Total Price Calculated: ₹${totalPrice}`);
     setPrice(totalPrice); // Set the total price
     setCalculated(true); // Indicate that the price has been calculated
   };
-  
-  
 
   const handleBookNow = () => {
     navigate('/getstarted'); // Navigate to /getstarted
@@ -181,32 +198,31 @@ function PricingCalculator() {
       </div>
 
       {/* Maintenance */}
-<div style={{ marginBottom: "1rem" }}>
-  <label style={{ width: "100%", textAlign: "center" }}>Maintenance & Support:</label>
-  <select
-    name="maintenance"
-    value={formData.maintenance}
-    onChange={handleChange}
-    style={{
-      width: "100%",
-      borderRadius: "20px",
-      border: "1px solid #c0c0c0",
-      padding: "12px 15px",
-      backgroundColor: "#343a40",
-      color: "#f8f9fa"
-    }}
-  >
-    <option value={0}>No Maintenance</option>
-    <option value={1}>1 Month</option>
-    <option value={3}>3 Months</option>
-    <option value={6}>6 Months</option>
-    <option value={12}>12 Months</option>
-  </select>
-</div>
-
+      <div style={{ marginBottom: "1rem" }}>
+        <label style={{ width: "100%", textAlign: "center" }}>Maintenance & Support:</label>
+        <select
+          name="maintenance"
+          value={formData.maintenance}
+          onChange={handleChange}
+          style={{
+            width: "100%",
+            borderRadius: "20px",
+            border: "1px solid #c0c0c0",
+            padding: "12px 15px",
+            backgroundColor: "#343a40",
+            color: "#f8f9fa"
+          }}
+        >
+          <option value={0}>No Maintenance</option>
+          <option value={1}>1 Month</option>
+          <option value={3}>3 Months</option>
+          <option value={6}>6 Months</option>
+          <option value={12}>1 Year</option>
+        </select>
+      </div>
 
       {/* Total Pages */}
-      <div style={{ marginBottom: "1rem", textAlign: "center" }}>
+      <div style={{ marginBottom: "1rem" }}>
         <label style={{ width: "100%", textAlign: "center" }}>Total Pages:</label>
         <input
           type="number"
@@ -238,27 +254,51 @@ function PricingCalculator() {
         <label>Advanced Admin Panel</label>
       </div>
 
-      <button
-        onClick={calculatePrice}
-        data-aos="zoom-in"
-        style={{
-          padding: "10px 15px",
-          borderRadius: "20px",
-          border: "0",
-          background: "teal",
-          color: "white",
-          cursor: "pointer",
-          marginTop: "1rem",
-          transition: "background-color 0.3s",
-          display: "block",
-          marginLeft: "auto",
-          marginRight: "auto"
-        }}
-      >
-        Calculate Price
-      </button>
+      {isSignedIn ? (
+        <>
+          {/* Calculate Button */}
+          <button
+            onClick={calculatePrice}
+            style={{
+              padding: "10px 15px",
+              borderRadius: "20px",
+              border: "0",
+              background: "teal",
+              color: "white",
+              cursor: "pointer",
+              marginTop: "1rem",
+              transition: "background-color 0.3s",
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto"
+            }}
+          >
+            Calculate Price
+          </button>
+        </>
+      ) : (
+        <button
+          onClick={handleGoogleSignIn}
+          data-aos="zoom-in"
+          style={{
+            padding: "10px 15px",
+            borderRadius: "20px",
+            border: "0",
+            background: "teal",
+            color: "white",
+            cursor: "pointer",
+            marginTop: "1rem",
+            transition: "background-color 0.3s",
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto"
+          }}
+        >
+          Sign In with Google to Check Price
+        </button>
+      )}
 
-      {price !== null && (
+      {price !== null && calculated && (
         <>
           <h3 style={{ marginTop: "20px", color: "lightgreen", textAlign: "center" }}>
             Total Cost: Rs {price}
