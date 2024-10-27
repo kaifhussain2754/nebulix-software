@@ -10,13 +10,8 @@ const FeatureNotification = () => {
       setShowNotification(true); // Show notification after 5 seconds
     }, 5000);
 
-    const hideTimer = setTimeout(() => {
-      setShowNotification(false); // Automatically hide notification after another 5 seconds
-    }, 10000); // Total duration is 10 seconds (5 seconds visible)
-
     return () => {
       clearTimeout(timer);
-      clearTimeout(hideTimer); // Cleanup on component unmount
     };
   }, []);
 

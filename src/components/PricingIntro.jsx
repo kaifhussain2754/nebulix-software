@@ -24,7 +24,7 @@ function PricingIntro() {
       style={{
         backgroundColor: "#121212",
         color: "#f8f9fa",
-        marginTop: '50px',
+        marginTop: "50px",
       }}
     >
       <div
@@ -37,14 +37,24 @@ function PricingIntro() {
         }}
       >
         {/* Text Section */}
-        <div
-          className="col-md-6 p-4"
-          data-aos="fade-right"
-        >
-          <h1 style={{ fontSize: "2em", marginBottom: "1em" }}>
+        <div className="col-md-6 p-4" data-aos="fade-right">
+          <h1
+            className="display-4 text-md-start text-center"
+            style={{
+              fontSize: "2em",
+              marginBottom: "1em",
+              fontSize: "clamp(1.5rem, 2.5vw + 1rem, 2.5rem)",
+            }}
+          >
             Website Pricing Calculator
           </h1>
-          <p style={{ fontSize: "1.1em", marginBottom: "1.5em" }}>
+          <p
+            className="text-md-start text-center"
+            style={{
+              fontSize: "clamp(1rem, 2vw + 0.5rem, 1.2rem)",
+              marginBottom: "1.5em",
+            }}
+          >
             Welcome to our Website Pricing Calculator! Our pricing is based on a few
             essential factors to help us give you the best value for your
             requirements. Here’s how we calculate our rates:
@@ -55,7 +65,7 @@ function PricingIntro() {
               marginBottom: "1.5em",
               paddingLeft: "1.5em",
               color: "#f8f9fa",
-              fontSize: "1rem",
+              fontSize: "clamp(0.9rem, 2vw + 0.3rem, 1rem)",
             }}
           >
             <li style={{ marginBottom: "0.75em" }}>
@@ -68,7 +78,13 @@ function PricingIntro() {
               <strong>Maintenance</strong>: Add ongoing support to keep your website updated.
             </li>
           </ul>
-          <p style={{ fontSize: "1.1em", marginBottom: "2em" }}>
+          <p
+            className="text-md-start text-center"
+            style={{
+              fontSize: "clamp(1rem, 2vw + 0.5rem, 1.1rem)",
+              marginBottom: "2em",
+            }}
+          >
             Click the button below to calculate an estimated price based on your
             preferences and needs.
           </p>
@@ -76,9 +92,8 @@ function PricingIntro() {
             onClick={handleButtonClick}
             style={{
               display: "flex",
-              alignItems: "flex-start",
+              alignItems: "center",
               justifyContent: "center",
-              alignSelf: "flex-start",
               fontFamily: "inherit",
               color: "#fff",
               fontWeight: 600,
@@ -86,7 +101,7 @@ function PricingIntro() {
               backgroundColor: "#000",
               border: "none",
               padding: "12px 16px",
-              fontSize: "1.1em",
+              fontSize: "clamp(1rem, 2vw + 0.5rem, 1.1rem)",
               gap: "8px",
               marginTop: "15px",
               cursor: "pointer",
