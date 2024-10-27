@@ -60,15 +60,6 @@ const testimonials = [
     colorClass: "bg-warning text-dark",
     imgSrc: "./Anshul.jpg",
   },
-  {
-    id: 7,
-    text: "Remarkable results! I would love to work with them again.",
-    name: "Bhavna Yogi",
-    role: "Project Manager",
-    rating: 4,
-    colorClass: "bg-success text-white",
-    imgSrc: "./test7.jpg",
-  },
 ];
 
 
