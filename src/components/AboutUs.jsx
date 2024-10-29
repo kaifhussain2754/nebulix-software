@@ -4,7 +4,6 @@ import './AboutUs.css'; // Import your custom CSS for additional styling
 import AOS from 'aos'; // Import AOS for animation
 import 'aos/dist/aos.css'; // Import AOS styles
 import { FaRocket, FaHandshake, FaEye } from 'react-icons/fa'; // Import icons from react-icons
-import TeamSlider from './TeamSlider';
 import { Helmet } from 'react-helmet'; // Import React Helmet
 
 const AboutUs = () => {
@@ -60,18 +59,6 @@ const AboutUs = () => {
         </div>
 
         <div className="col-md-4">
-          <div className="card mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-            <div className="card-body text-center">
-              <FaHandshake size={50} className="card-icon" />
-              <h3 className="card-title">Our Values</h3>
-              <p className="card-text">
-                We believe in integrity, collaboration, and continuous improvement, ensuring that our clients receive the best possible service and support.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-4">
           <div className="card mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
             <div className="card-body text-center">
               <FaEye size={50} className="card-icon" />
@@ -82,8 +69,19 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
+
+        <div className="col-md-4">
+          <div className="card mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div className="card-body text-center">
+              <FaHandshake size={50} className="card-icon" />
+              <h3 className="card-title">Our Values</h3>
+              <p className="card-text">
+                We believe in integrity, collaboration, and continuous improvement, ensuring that our clients receive the best possible service and support.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <TeamSlider />
     </div>
   );
 };
