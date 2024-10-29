@@ -34,6 +34,15 @@ const StatsSection = () => {
     marginRight: '5px',
   };
 
+  // Updated achievements data
+  const achievements = [
+    { title: 'Projects Completed', count: 49, icon: faClipboardCheck },
+    { title: 'Clients Served', count: 40, icon: faUserCheck },
+    { title: 'Years of Experience', count: 2, icon: faBriefcase },
+    { title: 'Team Members', count: 15, icon: faUserFriends },
+    { title: 'Completed Govt Projects', count: 3, icon: faTrophy }, // New achievement
+  ];
+
   return (
     <div style={sectionStyle} ref={ref}>
       <h2 style={headingStyle}>
@@ -41,12 +50,7 @@ const StatsSection = () => {
         Our Achievements
       </h2>
       <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
-        {[
-          { title: 'Projects Completed', count: 49, icon: faClipboardCheck },
-          { title: 'Clients Served', count: 40, icon: faUserCheck },
-          { title: 'Years of Experience', count: 2, icon: faBriefcase },
-          { title: 'Team Members', count: 15, icon: faUserFriends },
-        ].map((item, index) => (
+        {achievements.map((item, index) => (
           <div key={index} style={{ flex: '1', margin: '10px', textAlign: 'center' }}>
             <h3 style={countStyle}>
               {inView ? <CountUp end={item.count} duration={2} /> : '0'}+

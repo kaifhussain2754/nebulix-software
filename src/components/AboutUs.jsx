@@ -29,7 +29,7 @@ const AboutUs = () => {
         <div className="col-md-6" data-aos="fade-right" data-aos-duration="1000">
           <h2 style={{ color: 'white', marginTop: '50px' }}>About Nebulix Software</h2>
           <p style={{ textAlign: 'justify' }}>
-            At Nebulix Software the name itself has a lot of essence as it means inspiration and innovation. The name “Nebulix” was obtained from the word “nebula” which refers to birth of stars and creativity plus the modern techno-commercial suffix “-ix” to depict our organisation’s focus on providing technologically advanced solution. Our team is a devoted software development provider offering unique web, application, and turn-key software solutions based on a client’s need.
+          At Nebulix Software, the name itself carries profound meaning, symbolizing inspiration and innovation. Derived from the word "nebula," which signifies the birth of stars and creativity, "Nebulix" incorporates the modern techno-commercial suffix "-ix" to highlight our commitment to providing technologically advanced solutions. Our team is a dedicated software development provider, offering unique web, application, and turn-key software solutions tailored to each client’s needs. Proudly, we are also government certified, further affirming our credibility and dedication to excellence in software development.
           </p>
 
           <p style={{ textAlign: 'justify' }}>
