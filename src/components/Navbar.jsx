@@ -3,6 +3,7 @@ import { Navbar, Nav, Container, Offcanvas } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from '@mui/material';
 import AnimatedBanner from './AnimatedBanner'; // Import the AnimatedBanner component
+import TopBanner from "./TopBanner";
 
 const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
   const [expanded, setExpanded] = useState(false);
@@ -29,7 +30,7 @@ const CustomNavbar = ({ toggleColorScheme, isDarkMode }) => {
   return (
     <>
       {/* Animated Offer Banner */}
-      <AnimatedBanner />
+      <TopBanner />
 
       <Navbar
         expand="lg"

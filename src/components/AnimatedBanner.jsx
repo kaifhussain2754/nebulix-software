@@ -10,7 +10,7 @@
         textAlign: 'center',
         fontWeight: 'bold',
         position: 'fixed', // Make it fixed at the top
-        top: 0, // Align to the top
+        top: '49px', // Align to the top
         left: 0,
         right: 0, // Stretch to full width
         zIndex: 999, // Ensure it appears above other elements

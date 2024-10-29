@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { useNavigate } from 'react-router-dom';
 
 const FeatureNotification = () => {
   const [showNotification, setShowNotification] = useState(false);
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowNotification(true); // Show notification after 5 seconds
+      setShowNotification(true);
     }, 5000);
 
     return () => {
@@ -16,24 +16,23 @@ const FeatureNotification = () => {
   }, []);
 
   const handleCheckNowClick = () => {
-    setShowNotification(false); // Close the notification first
-    navigate('/pricing'); // Navigate to the pricing page
+    setShowNotification(false);
+    window.open('https://wa.link/cb3kww', '_blank'); // Open WhatsApp link in a new tab
   };
 
   const handleCloseClick = () => {
-    setShowNotification(false); // Close the notification
+    setShowNotification(false);
   };
 
-  if (!showNotification) return null; // Don't render anything if not showing
+  if (!showNotification) return null;
 
-  // Inline styles for the full-page notification
   const overlayStyle = {
     position: 'fixed',
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.8)', // Semi-transparent background
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -41,22 +40,22 @@ const FeatureNotification = () => {
   };
 
   const notificationStyle = {
-    position: 'relative', // Set position for absolute positioning of close button
-    width: '90%', // Set width to 90% for smaller devices
-    maxWidth: '400px', // Limit max width for larger screens
+    position: 'relative',
+    width: '90%',
+    maxWidth: '400px',
     height: 'auto',
     backgroundColor: '#333',
     color: '#fff',
     borderRadius: '10px',
-    boxShadow: '0 0 20px 5px rgba(255, 255, 255, 0.5)', // Neon white shadow
-    overflow: 'hidden', // Ensure content stays within the card
+    boxShadow: '0 0 20px 5px rgba(255, 255, 255, 0.5)',
+    overflow: 'hidden',
   };
 
   const imageStyle = {
-    width: '100%', // Cover the full width
-    height: 'auto', // Maintain aspect ratio
-    objectFit: 'cover', // Ensure the image covers the area nicely
-    display: 'block', // To avoid inline spacing issues
+    width: '100%',
+    height: 'auto',
+    objectFit: 'cover',
+    display: 'block',
   };
 
   const buttonContainerStyle = {
@@ -68,14 +67,15 @@ const FeatureNotification = () => {
   };
 
   const buttonStyle = {
-    backgroundColor: '#fff',
-    color: 'black',
+    backgroundColor: '#ecb45b',
+    color: 'white',
     border: 'none',
+    fontWeight: '600',
     borderRadius: '5px',
     padding: '10px 15px',
     cursor: 'pointer',
     transition: 'background-color 0.3s',
-    width: '100%', // Make button full width
+    width: '100%',
   };
 
   const closeButtonStyle = {
@@ -93,15 +93,15 @@ const FeatureNotification = () => {
     <div style={overlayStyle}>
       <div style={notificationStyle}>
         <button style={closeButtonStyle} onClick={handleCloseClick}>
-          &times; {/* Close icon */}
+          &times;
         </button>
-        <img src="./NewFeature.png" alt="Feature" style={imageStyle} />
+        <img src="./DiwaliOffer.png" alt="Feature" style={imageStyle} />
         <div style={buttonContainerStyle}>
           <button
             style={buttonStyle}
-            onClick={handleCheckNowClick} // Close notification and navigate
+            onClick={handleCheckNowClick}
           >
-            Check Now!
+            Claim Now!
           </button>
         </div>
       </div>
